@@ -1,15 +1,17 @@
 {
   "name": "1-Minute Punjabi",
   "short_name": "Punjabi",
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#FFF9F0",
+  "background_color": "#FFF9E6",
   "theme_color": "#FFD93D",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/197/197601.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
