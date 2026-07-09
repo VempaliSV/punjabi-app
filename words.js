@@ -90,3 +90,4 @@ window.library = [
             { p: "ਬੁਰਾ", pr: "Bura", en: "Bad", hi: "बुरा", te: "చెడు", e: "👎" },
             { p: "ਸੋਹਣਾ", pr: "Sohna", en: "Beautiful / Handsome", hi: "सुंदर", te: "అందమైన", e: "✨" }
         ];
+console.log("Words.js loaded successfully! Total words:", window.library.length);
