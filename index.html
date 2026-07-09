@@ -100,17 +100,7 @@
 
     <script>
         let idx = 0;
-        const synth = window.speechSynthesis;
-        let punjabiVoice = null;
-
-        // LOAD VOICES CAREFULLY
-        function getPunjabiVoice() {
-            const voices = synth.getVoices();
-            // Look specifically for Punjabi, fallback to Hindi (phonetically similar)
-            return voices.find(v => v.lang === 'pa-IN') || 
-                   voices.find(v => v.lang.startsWith('pa')) || 
-                   voices.find(v => v.lang === 'hi-IN');
-        }
+        let audioPlayer = new Audio();
 
         function startApp() {
             if (window.library && window.library.length > 0) {
