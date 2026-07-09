@@ -146,7 +146,7 @@
             synth.cancel(); // Stop current speech
             
             const item = window.library[idx];
-            const msg = new SpeechSynthesisUtterance(item.p);
+            const msg = new SpeechSynthesisUtterance(item.pr);
             
             const voice = getPunjabiVoice();
             if (voice) {
