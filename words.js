@@ -7,14 +7,14 @@ window.library = [
             { p: "ਜੀ ਆਇਆਂ ਨੂੰ", pr: "Ji aayan nu", en: "Welcome", hi: "स्वागत है", te: "స్వాగతం", em: "🙌" },
             { p: "ਅਲਵਿਦਾ", pr: "Alvida", en: "Goodbye", hi: "अलविदा", te: "సెలవు", em: "👋" },
             { p: "ਠੀਕ ਹੈ", pr: "Theek hai", en: "Okay / All right", hi: "ठीक है", te: "సరే", em: "👌" },
-        
+            
             // --- FAMILY ---
             { p: "ਮਾਂ", pr: "Maan", en: "Mother", hi: "माँ", te: "అమ్మ", em: "👩" },
             { p: "ਪਿਤਾ", pr: "Pita", en: "Father", hi: "पिता", te: "నాన్న", em: "👨" },
             { p: "ਭਰਾ", pr: "Bharaa", en: "Brother", hi: "भाई", te: "సహోదరుడు", em: "👦" },
             { p: "ਭੈਣ", pr: "Bhain", en: "Sister", hi: "बहन", te: "సోదరి", em: "👧" },
             { p: "ਦੋਸਤ", pr: "Dost", en: "Friend", hi: "दोस्त", te: "స్నేహితుడు", em: "🤝" },
-        
+            
             // --- DAILY LIFE & OBJECTS ---
             { p: "ਘਰ", pr: "Ghar", en: "House / Home", hi: "घर", te: "ఇల్లు", em: "🏠" },
             { p: "ਕਿਤਾਬ", pr: "Kitaab", en: "Book", hi: "किताब", te: "పుస్తకం", em: "📖" },
@@ -22,20 +22,20 @@ window.library = [
             { p: "ਪੈਸੇ", pr: "Paise", en: "Money", hi: "पैसे", te: "డబ్బులు", em: "💵" },
             { p: "ਫੋਨ", pr: "Phon", en: "Phone", hi: "फ़ोन", te: "ఫోన్", em: "📱" },
             { p: "ਸਕੂਲ", pr: "Skool", en: "School", hi: "स्कूल", te: "బడి", em: "🏫" },
-        
+            
             // --- FOOD & DRINK ---
             { p: "ਦੁੱਧ", pr: "Dudh", en: "Milk", hi: "दूध", te: "పాలు", em: "🥛" },
             { p: "ਚਾਹ", pr: "Chaah", en: "Tea", hi: "चाय", te: "టీ", em: "☕" },
             { p: "ਫਲ", pr: "Phal", en: "Fruit", hi: "फल", te: "పండు", em: "🍌" },
             { p: "ਸਬਜ਼ੀ", pr: "Sabzee", en: "Vegetable", hi: "सब्जी", te: "కూరగాయ", em: "🥦" },
-        
+            
             // --- TIME & NUMBERS ---
             { p: "ਅੱਜ", pr: "Ajj", en: "Today", hi: "आज", te: "ఈరోజు", em: "📅" },
             { p: "ਕੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", em: "⏳" },
             { p: "ਇੱਕ", pr: "Ikk", en: "One", hi: "एक", te: "ఒకటి", em: "1️⃣" },
             { p: "ਦੋ", pr: "Do", en: "Two", hi: "दो", te: "రెండు", em: "2️⃣" },
             { p: "ਤਿੰਨ", pr: "Tinn", en: "Three", hi: "तीन", te: "మూడు", em: "3️⃣" },
-
+            
             // --- COLORS ---
             { p: "ਲਾਲ", pr: "Laal", en: "Red", hi: "लाल", te: "ఎరుపు", em: "🔴" },
             { p: "ਨੀਲਾ", pr: "Neela", en: "Blue", hi: "नीला", te: "నీలం", em: "🔵" },
@@ -44,7 +44,7 @@ window.library = [
             { p: "ਕਾਲਾ", pr: "Kaala", en: "Black", hi: "काला", te: "నలుపు", em: "⚫" },
             { p: "ਚਿੱਟਾ", pr: "Chitta", en: "White", hi: "सफेद", te: "తెలుపు", em: "⚪" },
             { p: "ਗੁਲਾਬੀ", pr: "Gulaabi", en: "Pink", hi: "गुलाबी", te: "గులాబీ", em: "🌸" },
-        
+            
             // --- ANIMALS ---
             { p: "ਕੁੱਤਾ", pr: "Kutta", en: "Dog", hi: "कुत्ता", te: "కుక్క", em: "🐶" },
             { p: "ਬਿੱਲੀ", pr: "Billi", en: "Cat", hi: "बिल्ली", te: "పిల్లి", em: "🐱" },
@@ -53,7 +53,7 @@ window.library = [
             { p: "ਸ਼ੇਰ", pr: "Sher", en: "Lion", hi: "शेर", te: "సింహం", em: "🦁" },
             { p: "ਪੰਛੀ", pr: "Panchhi", en: "Bird", hi: "पक्षी", te: "పక్షి", em: "🐦" },
             { p: "ਮੱਛੀ", pr: "Machhi", en: "Fish", hi: "मछली", te: "చేప", em: "🐟" },
-        
+            
             // --- HUMAN BODY ---
             { p: "ਅੱਖ", pr: "Akkh", en: "Eye", hi: "आँख", te: "కన్ను", em: "👁️" },
             { p: "ਕੰਨ", pr: "Kann", en: "Ear", hi: "कान", te: "చెవి", em: "👂" },
@@ -62,7 +62,7 @@ window.library = [
             { p: "ਪੈਰ", pr: "Pair", en: "Foot / Leg", hi: "पैर", te: "కాలు", em: "🦶" },
             { p: "ਸਿਰ", pr: "Sir", en: "Head", hi: "सिर", te: "తల", em: "👤" },
             { p: "ਦਿਲ", pr: "Dil", en: "Heart", hi: "दिल", te: "గుండె", em: "❤️" },
-        
+            
             // --- NATURE & WEATHER ---
             { p: "ਸੂਰਜ", pr: "Sooraj", en: "Sun", hi: "सूरज", te: "సూర్యుడు", em: "☀️" },
             { p: "ਚੰਦ", pr: "Chand", en: "Moon", hi: "चाँद", te: "చంద్రుడు", em: "🌙" },
@@ -71,7 +71,7 @@ window.library = [
             { p: "ਹਵਾ", pr: "Hava", en: "Wind / Air", hi: "हवा", te: "గాలి", em: "💨" },
             { p: "ਅੱਗ", pr: "Agg", en: "Fire", hi: "आग", te: "నిప్పు", em: "🔥" },
             { p: "ਦਰਖਤ", pr: "Darakhat", en: "Tree", hi: "पेड़", te: "చెట్టు", em: "🌳" },
-        
+            
             // --- QUESTIONS & CONVERSATION ---
             { p: "ਇਹ ਕੀ ਹੈ?", pr: "Eh kee hai?", en: "What is this?", hi: "यह क्या है?", te: "ఇది ఏమిటి?", em: "❓" },
             { p: "ਇਹ ਕਿੱਥੇ ਹੈ?", pr: "Eh kitthe hai?", en: "Where is it?", hi: "यह कहाँ है?", te: "ఇది ఎక్కడ ఉంది?", em: "📍" },
@@ -80,24 +80,24 @@ window.library = [
             { p: "ਕਦੋਂ?", pr: "Kadon?", en: "When?", hi: "कब?", te: "ఎప్పుడు?", em: "🕒" },
             
             // --- GREETINGS & INTRODUCTIONS ---
-                { p: "ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?", pr: "Tu-haa-da naa kee hai?", en: "What is your name?", hi: "आपका नाम क्या है?", te: "మీ పేరు ఏమిటి?", e: "📛" },
-                { p: "ਮੇਰਾ ਨਾਂ ... ਹੈ", pr: "Me-ra naa ... hai", en: "My name is ...", hi: "मेरा नाम ... है", te: "నా పేరు ...", e: "👤" },
-                { p: "ਕੀ ਹਾਲ ਹੈ?", pr: "Kee haal hai?", en: "How's it going? / How are you?", hi: "क्या हाल है?", te: "ఎలా ఉన్నారు?", e: "👋" },
-                { p: "ਸਭ ਠੀਕ ਹੈ", pr: "Sabh theek hai", en: "Everything is fine", hi: "सब ठीक है", te: "అంతా బాగుంది", e: "👍" },
-                { p: "ਫੇਰ ਮਿਲਾਂਗੇ", pr: "Pher mi-lan-ge", en: "See you again / See you later", hi: "फिर मिलेंगे", te: "మళ్ళీ కలుద్దాం", e: "👋" },
+            { p: "ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?", pr: "Tu-haa-da naa kee hai?", en: "What is your name?", hi: "आपका नाम क्या है?", te: "మీ పేరు ఏమిటి?", e: "📛" },
+            { p: "ਮੇਰਾ ਨਾਂ ... ਹੈ", pr: "Me-ra naa ... hai", en: "My name is ...", hi: "मेरा नाम ... है", te: "నా పేరు ...", e: "👤" },
+            { p: "ਕੀ ਹਾਲ ਹੈ?", pr: "Kee haal hai?", en: "How's it going? / How are you?", hi: "क्या हाल है?", te: "ఎలా ఉన్నారు?", e: "👋" },
+            { p: "ਸਭ ਠੀਕ ਹੈ", pr: "Sabh theek hai", en: "Everything is fine", hi: "सब ठीक है", te: "అంతా బాగుంది", e: "👍" },
+            { p: "ਫੇਰ ਮਿਲਾਂਗੇ", pr: "Pher mi-lan-ge", en: "See you again / See you later", hi: "फिर मिलेंगे", te: "మళ్ళీ కలుద్దాం", e: "👋" },
             
-                // --- EVERYDAY REACTIONS ---
-                { p: "ਕੋਈ ਗੱਲ ਨਹੀਂ", pr: "Ko-ee gall na-hi", en: "No problem / It's okay", hi: "कोई बात नहीं", te: "పర్వాలేదు", e: "😌" },
-                { p: "ਵਾਹ ਬਈ ਵਾਹ!", pr: "Vaah bai vaah!", en: "Wow! / Excellent!", hi: "वाह भाई वाह!", te: "వావ్! అద్భుతం!", e: "🤩" },
-                { p: "ਐਵੇਂ ਹੀ", pr: "Ai-vein hi", en: "Just like that / For no reason", hi: "ऐसे ही", te: "ఊరికే", e: "🤷" },
-                { p: "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ", pr: "Mai-nu na-hi pa-ta", en: "I don't know", hi: "मुझे नहीं पता", te: "నాకు తెలియదు", e: "🤷‍♂️" },
+            // --- EVERYDAY REACTIONS ---
+            { p: "ਕੋਈ ਗੱਲ ਨਹੀਂ", pr: "Ko-ee gall na-hi", en: "No problem / It's okay", hi: "कोई बात नहीं", te: "పర్వాలేదు", e: "😌" },
+            { p: "ਵਾਹ ਬਈ ਵਾਹ!", pr: "Vaah bai vaah!", en: "Wow! / Excellent!", hi: "वाह भाई वाह!", te: "వావ్! అద్భుతం!", e: "🤩" },
+            { p: "ਐਵੇਂ ਹੀ", pr: "Ai-vein hi", en: "Just like that / For no reason", hi: "ऐसे ही", te: "ఊరికే", e: "🤷" },
+            { p: "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ", pr: "Mai-nu na-hi pa-ta", en: "I don't know", hi: "मुझे नहीं पता", te: "నాకు తెలియదు", e: "🤷‍♂️" },
             
-                // --- NEEDS & EXPRESSIONS ---
-                { p: "ਕੀ ਬਣਿਆ?", pr: "Kee ban-ya?", en: "What happened?", hi: "क्या हुआ?", te: "ఏమైంది?", e: "🧐" },
-                { p: "ਮੈਨੂੰ ਭੁੱਖ ਲੱਗੀ ਹੈ", pr: "Mai-nu bhukh lag-gee hai", en: "I am hungry", hi: "मुझे भूख लगी है", te: "నాకు ఆకలిగా ఉంది", e: "😋" },
-                { p: "ਤਿਆਰ ਹੋ ਜਾਓ", pr: "Tya-ar ho ja-o", en: "Get ready", hi: "तैयार हो जाओ", te: "తయారవ్వండి", e: "👟" },
-                { p: "ਰੱਬ ਰਾਖਾ", pr: "Rabb raa-kha", en: "God be with you / Goodbye", hi: "भगवान भला करे", te: "దేవుడే రక్షకుడు", e: "🙌" },
-        
+            // --- NEEDS & EXPRESSIONS ---
+            { p: "ਕੀ ਬਣਿਆ?", pr: "Kee ban-ya?", en: "What happened?", hi: "क्या हुआ?", te: "ఏమైంది?", e: "🧐" },
+            { p: "ਮੈਨੂੰ ਭੁੱਖ ਲੱਗੀ ਹੈ", pr: "Mai-nu bhukh lag-gee hai", en: "I am hungry", hi: "मुझे भूख लगी है", te: "నాకు ఆకలిగా ఉంది", e: "😋" },
+            { p: "ਤਿਆਰ ਹੋ ਜਾਓ", pr: "Tya-ar ho ja-o", en: "Get ready", hi: "तैयार हो जाओ", te: "తయారవ్వండి", e: "👟" },
+            { p: "ਰੱਬ ਰਾਖਾ", pr: "Rabb raa-kha", en: "God be with you / Goodbye", hi: "भगवान भला करे", te: "దేవుడే రక్షకుడు", e: "🙌" },
+            
             // --- ADJECTIVES & EMOTIONS ---
             { p: "ਖੁਸ਼", pr: "Khush", en: "Happy", hi: "खुश", te: "సంతోషం", em: "😊" },
             { p: "ਉਦਾਸ", pr: "Udaas", en: "Sad", hi: "उदास", te: "బాధ", em: "😢" },
