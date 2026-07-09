@@ -101,6 +101,7 @@
     <script>
         let idx = 0;
         let audioPlayer = new Audio();
+        const API_KEY = "sk_a3yrbk0h_FWWi8WpacPJJndXv6KxhB2l0";
 
         function startApp() {
             if (window.library && window.library.length > 0) {
@@ -137,17 +138,44 @@
         }
 
         // 5. AUDIO LOGIC (Gurmukhi Accent)
-        function sayIt(e) {
-            if (e) e.stopPropagation(); // Stop card from flipping when button is pressed
+        async function sayIt(e) {
+            if (e) e.stopPropagation();
             
-            if (!window.library || !window.library[idx]) return;
+            const textToSpeak = window.library[idx].p;
+            const btn = document.getElementById('speakBtn');
+            
+            if (btn.classList.contains('loading')) return;
+            btn.classList.add('loading');
 
-            const text = window.library[idx].p;
-            // Native Punjabi Accent Engine URL
-            const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
-            
-            audioPlayer.src = audioUrl;
-            audioPlayer.play().catch(err => console.log("Audio waiting for user tap."));
+            try {
+                const response = await fetch("https://api.sarvam.ai/text-to-speech", {
+                    method: "POST",
+                    headers: {
+                        "api-subscription-key": API_KEY,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        inputs: [textToSpeak],
+                        target_language_code: "pa-IN", // Punjabi
+                        speaker: "shubh",
+                        model: "bulbul:v1" 
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.audios && data.audios[0]) {
+                    // Sarvam returns a Base64 string
+                    const base64Audio = data.audios[0];
+                    audioPlayer.src = `data:audio/wav;base64,${base64Audio}`;
+                    audioPlayer.play();
+                }
+            } catch (error) {
+                console.error("Sarvam AI Error:", error);
+                alert("Voice service busy, try again!");
+            } finally {
+                btn.classList.remove('loading');
+            }
         }
 
         function nav(step) {
