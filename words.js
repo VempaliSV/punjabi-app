@@ -34,7 +34,7 @@ window.library = [
             { p: "ਕੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", e: "⏳" },
             { p: "ਇੱਕ", pr: "Ikk", en: "One", hi: "एक", te: "ఒకటి", e: "1️⃣" },
             { p: "ਦੋ", pr: "Do", en: "Two", hi: "दो", te: "రెండు", e: "2️⃣" },
-            { p: "ਤਿੰਨ", pr: "Tinn", en: "Three", hi: "तीन", te: "మూడు", e: "3️⃣" }
+            { p: "ਤਿੰਨ", pr: "Tinn", en: "Three", hi: "तीन", te: "మూడు", e: "3️⃣" },
 
             // --- COLORS ---
             { p: "ਲਾਲ", pr: "Laal", en: "Red", hi: "लाल", te: "ఎరుపు", e: "🔴" },
