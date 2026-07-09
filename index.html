@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1-Minute Punjabi</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="words.js"></script>
+    
     <style>
         :root {
             --bg: #FFF9E6; 
@@ -27,17 +27,15 @@
             touch-action: manipulation;
         }
 
-        /* Progress Header */
         .header { position: absolute; top: 20px; text-align: center; }
-        .header h1 { font-size: 1.2rem; color: #E67E22; margin: 0; }
-        .counter { font-size: 0.8rem; color: #AAA; }
+        .header h1 { font-size: 1.4rem; color: #E67E22; margin: 0; }
+        #counter { font-size: 0.8rem; color: #AAA; }
 
-        /* The Card */
-        .card-container { width: 320px; height: 450px; perspective: 1000px; }
+        .card-container { width: 320px; height: 480px; perspective: 1000px; }
         .card {
             width: 100%; height: 100%; position: relative;
-            transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); cursor: pointer;
+            transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); cursor: pointer;
         }
         .card.is-flipped { transform: rotateY(180deg); }
 
@@ -45,218 +43,123 @@
             position: absolute; width: 100%; height: 100%;
             backface-visibility: hidden; display: flex; flex-direction: column;
             align-items: center; justify-content: center; border-radius: 40px;
-            padding: 30px; box-sizing: border-box; border: 8px solid white;
+            padding: 20px; box-sizing: border-box; border: 10px solid white;
         }
 
         .card-front { background-color: var(--card-front); }
         .card-back { background-color: var(--card-back); transform: rotateY(180deg); }
 
-        .emoji { font-size: 100px; margin-bottom: 10px; }
+        .emoji { font-size: 80px; margin-bottom: 10px; }
         .punjabi-word { font-size: 3rem; color: var(--punjabi-text); margin: 0; text-align: center; }
         
-        /* Audio Button - Big and Pulsing */
-        .speaker-btn {
-            background: #FF6B6B; border: none; width: 85px; height: 85px;
-            border-radius: 50%; cursor: pointer; display: flex;
-            align-items: center; justify-content: center; margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-            animation: pulse 2s infinite;
+        /* NEW: Pronunciation Style */
+        .pronunciation {
+            font-size: 1.1rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+            background: #fdf2d5;
+            padding: 5px 15px;
+            border-radius: 12px;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        .speaker-btn svg { fill: white; width: 40px; }
 
-        .meaning-box { text-align: center; margin: 10px 0; }
-        .label { font-size: 0.7rem; color: #BBB; text-transform: uppercase; }
-        .meaning { font-size: 1.6rem; margin: 0; font-weight: bold; }
+        .speaker-btn {
+            background: #FF6B6B; border: none; width: 70px; height: 70px;
+            border-radius: 50%; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; margin-bottom: 15px;
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
+        }
+        .speaker-btn svg { fill: white; width: 30px; }
 
+        .meaning { font-size: 1.5rem; margin: 4px 0; font-weight: bold; }
         .eng { color: #2E86C1; } .hin { color: #27AE60; } .tel { color: #8E44AD; }
 
-        /* Nav */
-        .nav-controls { display: flex; gap: 40px; margin-top: 30px; }
-        .nav-btn {
-            background: white; border: none; padding: 15px 30px;
-            border-radius: 20px; font-weight: bold; color: #888;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
+        .nav { display: flex; gap: 30px; margin-top: 30px; }
+        .btn { background: white; border: none; padding: 15px 30px; border-radius: 20px; color: #888; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1 id="topTitle">1-Minute Punjabi</h1>
-        <div class="counter" id="cardCount">Card 1</div>
+        <h1>1-Minute Punjabi</h1>
+        <div id="counter">Card 1</div>
     </div>
 
     <div class="card-container">
         <div class="card" id="mainCard" onclick="handleFlip(event)">
+            <!-- FRONT -->
             <div class="card-face card-front">
-                <div class="emoji" id="e">🙏</div>
-                <h2 class="punjabi-word" id="p">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ</h2>
-                <p style="color:rgba(0,0,0,0.2); font-weight:bold; margin-top:40px;">TAP TO LEARN</p>
+                <div class="emoji" id="e"></div>
+                <h2 class="punjabi-word" id="p"></h2>
+                <div style="color:rgba(0,0,0,0.1); margin-top:30px; font-weight:bold;">TAP TO REVEAL</div>
             </div>
+            <!-- BACK -->
             <div class="card-face card-back">
-                <button class="speaker-btn" onclick="playPunjabi(event)">
+                <button class="speaker-btn" onclick="playAudio(event)">
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                 </button>
-                <div class="meaning-box"><div class="label">English</div><p class="meaning eng" id="en"></p></div>
-                <div class="meaning-box"><div class="label">Hindi</div><p class="meaning hin" id="hi"></p></div>
-                <div class="meaning-box"><div class="label">Telugu</div><p class="meaning tel" id="te"></p></div>
+                
+                <!-- Pronunciation Element -->
+                <div id="pr" class="pronunciation"></div>
+
+                <p class="meaning eng" id="en"></p>
+                <p class="meaning hin" id="hi"></p>
+                <p class="meaning tel" id="te"></p>
             </div>
         </div>
     </div>
 
-    <div class="nav-controls">
-        <button class="nav-btn" onclick="move(-1)">← Back</button>
-        <button class="nav-btn" onclick="move(1)">Next →</button>
+    <div class="nav">
+        <button class="btn" onclick="move(-1)">← Back</button>
+        <button class="btn" onclick="move(1)">Next →</button>
     </div>
 
     <script>
-        const library = [
-            // --- ESSENTIALS & COURTESIES ---
-            { p: "ਹਾਂ", pr: "Haan", en: "Yes", hi: "हाँ", te: "అవును", e: "✅" },
-            { p: "ਨਹੀਂ", pr: "Nahi", en: "No", hi: "नहीं", te: "కాదు", e: "❌" },
-            { p: "ਕਿਰਪਾ ਕਰਕੇ", pr: "Kirpa karke", en: "Please", hi: "कृपया", te: "దయచేసి", e: "🙏" },
-            { p: "ਮਾਫ਼ ਕਰਨਾ", pr: "Maaf karna", en: "Excuse me / Sorry", hi: "माफ़ करना", te: "క్షమించండి", e: "🙇" },
-            { p: "ਜੀ ਆਇਆਂ ਨੂੰ", pr: "Ji aayan nu", en: "Welcome", hi: "स्वागत है", te: "స్వాగతం", e: "🙌" },
-            { p: "ਅਲਵਿਦਾ", pr: "Alvida", en: "Goodbye", hi: "अलविदा", te: "సెలవు", e: "👋" },
-            { p: "ਠੀਕ ਹੈ", pr: "Theek hai", en: "Okay / All right", hi: "ठीक है", te: "సరే", e: "👌" },
-        
-            // --- FAMILY ---
-            { p: "ਮਾਂ", pr: "Maan", en: "Mother", hi: "माँ", te: "అమ్మ", e: "👩" },
-            { p: "ਪਿਤਾ", pr: "Pita", en: "Father", hi: "पिता", te: "నాన్న", e: "👨" },
-            { p: "ਭਰਾ", pr: "Bharaa", en: "Brother", hi: "भाई", te: "సహోదరుడు", e: "👦" },
-            { p: "ਭੈਣ", pr: "Bhain", en: "Sister", hi: "बहन", te: "సోదరి", e: "👧" },
-            { p: "ਦੋਸਤ", pr: "Dost", en: "Friend", hi: "दोस्त", te: "స్నేహితుడు", e: "🤝" },
-        
-            // --- DAILY LIFE & OBJECTS ---
-            { p: "ਘਰ", pr: "Ghar", en: "House / Home", hi: "घर", te: "ఇల్లు", e: "🏠" },
-            { p: "ਕਿਤਾਬ", pr: "Kitaab", en: "Book", hi: "किताब", te: "పుస్తకం", e: "📖" },
-            { p: "ਗੱਡੀ", pr: "Gaddi", en: "Car / Vehicle", hi: "गाड़ी", te: "కారు", e: "🚗" },
-            { p: "ਪੈਸੇ", pr: "Paise", en: "Money", hi: "पैसे", te: "డబ్బులు", e: "💵" },
-            { p: "ਫੋਨ", pr: "Phon", en: "Phone", hi: "फ़ोन", te: "ఫోన్", e: "📱" },
-            { p: "ਸਕੂਲ", pr: "Skool", en: "School", hi: "स्कूल", te: "బడి", e: "🏫" },
-        
-            // --- FOOD & DRINK ---
-            { p: "ਦੁੱਧ", pr: "Dudh", en: "Milk", hi: "दूध", te: "పాలు", e: "🥛" },
-            { p: "ਚਾਹ", pr: "Chaah", en: "Tea", hi: "चाय", te: "టీ", e: "☕" },
-            { p: "ਫਲ", pr: "Phal", en: "Fruit", hi: "फल", te: "పండు", e: "🍌" },
-            { p: "ਸਬਜ਼ੀ", pr: "Sabzee", en: "Vegetable", hi: "सब्जी", te: "కూరగాయ", e: "🥦" },
-        
-            // --- TIME & NUMBERS ---
-            { p: "ਅੱਜ", pr: "Ajj", en: "Today", hi: "आज", te: "ఈరోజు", e: "📅" },
-            { p: "ਕੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", e: "⏳" },
-            { p: "ਇੱਕ", pr: "Ikk", en: "One", hi: "एक", te: "ఒకటి", e: "1️⃣" },
-            { p: "ਦੋ", pr: "Do", en: "Two", hi: "दो", te: "రెండు", e: "2️⃣" },
-            { p: "ਤਿੰਨ", pr: "Tinn", en: "Three", hi: "तीन", te: "మూడు", e: "3️⃣" }
+        let currentIdx = 0;
+        const synth = window.speechSynthesis;
 
-            // --- COLORS ---
-            { p: "ਲਾਲ", pr: "Laal", en: "Red", hi: "लाल", te: "ఎరుపు", e: "🔴" },
-            { p: "ਨੀਲਾ", pr: "Neela", en: "Blue", hi: "नीला", te: "నీలం", e: "🔵" },
-            { p: "ਹਰਾ", pr: "Haraa", en: "Green", hi: "हरा", te: "ఆకుపచ్చ", e: "🟢" },
-            { p: "ਪੀਲਾ", pr: "Peela", en: "Yellow", hi: "पीला", te: "పసుపు", e: "🟡" },
-            { p: "ਕਾਲਾ", pr: "Kaala", en: "Black", hi: "काला", te: "నలుపు", e: "⚫" },
-            { p: "ਚਿੱਟਾ", pr: "Chitta", en: "White", hi: "सफेद", te: "తెలుపు", e: "⚪" },
-            { p: "ਗੁਲਾਬੀ", pr: "Gulaabi", en: "Pink", hi: "गुलाबी", te: "గులాబీ", e: "🌸" },
-        
-            // --- ANIMALS ---
-            { p: "ਕੁੱਤਾ", pr: "Kutta", en: "Dog", hi: "कुत्ता", te: "కుక్క", e: "🐶" },
-            { p: "ਬਿੱਲੀ", pr: "Billi", en: "Cat", hi: "बिल्ली", te: "పిల్లి", e: "🐱" },
-            { p: "ਗਾਂ", pr: "Gaan", en: "Cow", hi: "गाय", te: "ఆవు", e: "🐄" },
-            { p: "ਘੋੜਾ", pr: "Ghora", en: "Horse", hi: "घोड़ा", te: "గుర్రం", e: "🐴" },
-            { p: "ਸ਼ੇਰ", pr: "Sher", en: "Lion", hi: "शेर", te: "సింహం", e: "🦁" },
-            { p: "ਪੰਛੀ", pr: "Panchhi", en: "Bird", hi: "पक्षी", te: "పక్షి", e: "🐦" },
-            { p: "ਮੱਛੀ", pr: "Machhi", en: "Fish", hi: "मछली", te: "చేప", e: "🐟" },
-        
-            // --- HUMAN BODY ---
-            { p: "ਅੱਖ", pr: "Akkh", en: "Eye", hi: "आँख", te: "కన్ను", e: "👁️" },
-            { p: "ਕੰਨ", pr: "Kann", en: "Ear", hi: "कान", te: "చెవి", e: "👂" },
-            { p: "ਨੱਕ", pr: "Nakk", en: "Nose", hi: "नाक", te: "ముక్కు", e: "👃" },
-            { p: "ਹੱਥ", pr: "Hatth", en: "Hand", hi: "हाथ", te: "చెయ్యి", e: "✋" },
-            { p: "ਪੈਰ", pr: "Pair", en: "Foot / Leg", hi: "पैर", te: "కాలు", e: "🦶" },
-            { p: "ਸਿਰ", pr: "Sir", en: "Head", hi: "सिर", te: "తల", e: "👤" },
-            { p: "ਦਿਲ", pr: "Dil", en: "Heart", hi: "दिल", te: "గుండె", e: "❤️" },
-        
-            // --- NATURE & WEATHER ---
-            { p: "ਸੂਰਜ", pr: "Sooraj", en: "Sun", hi: "सूरज", te: "సూర్యుడు", e: "☀️" },
-            { p: "ਚੰਦ", pr: "Chand", en: "Moon", hi: "चाँद", te: "చంద్రుడు", e: "🌙" },
-            { p: "ਅਸਮਾਨ", pr: "Asmaan", en: "Sky", hi: "आसमान", te: "ఆకాశం", e: "☁️" },
-            { p: "ਮੀਂਹ", pr: "Meenh", en: "Rain", hi: "बारिश", te: "వర్షం", e: "🌧️" },
-            { p: "ਹਵਾ", pr: "Hava", en: "Wind / Air", hi: "हवा", te: "గాలి", e: "💨" },
-            { p: "ਅੱਗ", pr: "Agg", en: "Fire", hi: "आग", te: "నిప్పు", e: "🔥" },
-            { p: "ਦਰਖਤ", pr: "Darakhat", en: "Tree", hi: "पेड़", te: "చెట్టు", e: "🌳" },
-        
-            // --- QUESTIONS & CONVERSATION ---
-            { p: "ਇਹ ਕੀ ਹੈ?", pr: "Eh kee hai?", en: "What is this?", hi: "यह क्या है?", te: "ఇది ఏమిటి?", e: "❓" },
-            { p: "ਇਹ ਕਿੱਥੇ ਹੈ?", pr: "Eh kitthe hai?", en: "Where is it?", hi: "यह कहाँ है?", te: "ఇది ఎక్కడ ఉంది?", e: "📍" },
-            { p: "ਤੁਸੀਂ ਕੌਣ ਹੋ?", pr: "Tusi kaun ho?", en: "Who are you?", hi: "आप कौन हैं?", te: "మీరు ఎవరు?", e: "👤" },
-            { p: "ਕਿਉਂ?", pr: "Kiyun?", en: "Why?", hi: "क्यों?", te: "ఎందుకు?", e: "🤔" },
-            { p: "ਕਦੋਂ?", pr: "Kadon?", en: "When?", hi: "कब?", te: "ఎప్పుడు?", e: "🕒" },
-        
-            // --- ADJECTIVES & EMOTIONS ---
-            { p: "ਖੁਸ਼", pr: "Khush", en: "Happy", hi: "खुश", te: "సంతోషం", e: "😊" },
-            { p: "ਉਦਾਸ", pr: "Udaas", en: "Sad", hi: "उदास", te: "బాధ", e: "😢" },
-            { p: "ਵੱਡਾ", pr: "Vadda", en: "Big", hi: "बड़ा", te: "పెద్ద", e: "🐘" },
-            { p: "ਛੋਟਾ", pr: "Chhota", en: "Small", hi: "छोटा", te: "చిన్న", e: "🐭" },
-            { p: "ਗਰਮ", pr: "Garam", en: "Hot", hi: "गरम", te: "వేడి", e: "🔥" },
-            { p: "ਠੰਢਾ", pr: "Thandhaa", en: "Cold", hi: "ठंडा", te: "చల్లని", e: "❄️" },
-            { p: "ਚੰਗਾ", pr: "Changa", en: "Good", hi: "अच्छा", te: "మంచి", e: "👍" },
-            { p: "ਬੁਰਾ", pr: "Bura", en: "Bad", hi: "बुरा", te: "చెడు", e: "👎" },
-            { p: "ਸੋਹਣਾ", pr: "Sohna", en: "Beautiful / Handsome", hi: "सुंदर", te: "అందమైన", e: "✨" }
-        ];
-
-        let idx = 0;
-        let voicesLoaded = false;
-
-        function update() {
-            const d = library[idx];
-            document.getElementById('p').innerText = d.p;
-            document.getElementById('e').innerText = d.em;
-            document.getElementById('en').innerText = d.en;
-            document.getElementById('hi').innerText = d.hi;
-            document.getElementById('te').innerText = d.te;
-            document.getElementById('cardCount').innerText = `Card ${idx + 1} of ${library.length}`;
+        function updateUI() {
+            const item = library[currentIdx];
+            document.getElementById('p').innerText = item.p;
+            document.getElementById('e').innerText = item.em;
+            
+            // Show the Pronunciation
+            document.getElementById('pr').innerText = item.pr;
+            
+            document.getElementById('en').innerText = item.en;
+            document.getElementById('hi').innerText = item.hi;
+            document.getElementById('te').innerText = item.te;
+            document.getElementById('counter').innerText = `Card ${currentIdx + 1} of ${library.length}`;
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
         function handleFlip(e) {
-            if (e.target.closest('.speaker-btn')) return;
-            
-            // "Wake up" audio engine on first interaction (Required for Mobile)
-            if(!voicesLoaded) {
-                const silentValue = new SpeechSynthesisUtterance("");
-                window.speechSynthesis.speak(silentValue);
-                voicesLoaded = true;
-            }
-            
+            if (e.target.closest('button')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
-        function move(n) {
-            idx = (idx + n + library.length) % library.length;
-            update();
+        function move(step) {
+            currentIdx = (currentIdx + step + library.length) % library.length;
+            updateUI();
         }
 
-        function playPunjabi(e) {
+        function playAudio(e) {
             e.stopPropagation();
-            const text = library[idx].p;
-            const msg = new SpeechSynthesisUtterance(text);
-            
-            // Set Language to Punjabi
+            synth.cancel();
+            const msg = new SpeechSynthesisUtterance(library[currentIdx].p);
             msg.lang = 'pa-IN';
-            msg.rate = 0.7; // Slow for kids
+            msg.rate = 0.8;
             
-            // Find Punjabi voice among system voices
-            const voices = window.speechSynthesis.getVoices();
-            const paVoice = voices.find(v => v.lang.includes('pa') || v.lang.includes('punjabi'));
+            const voices = synth.getVoices();
+            const paVoice = voices.find(v => v.lang.includes('pa'));
             if(paVoice) msg.voice = paVoice;
 
-            window.speechSynthesis.cancel();
-            window.speechSynthesis.speak(msg);
+            synth.speak(msg);
         }
 
-        // Initialize
-        update();
-        window.speechSynthesis.getVoices(); // Pre-load
+        window.onload = updateUI;
+        // Pre-load voices for Chrome
+        synth.onvoiceschanged = () => synth.getVoices();
     </script>
 </body>
 </html>
