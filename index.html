@@ -5,50 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>1-Minute Punjabi</title>
     
-    <!-- Link to your external words.js -->
+    <!-- Link to your words.js -->
     <script src="words.js"></script>
 
     <style>
-        :root { 
-            --bg: #FFF9E6; 
-            --card-f: #FFD93D; 
-            --card-b: #FFFFFF; 
-            --orange: #D35400; 
-        }
-
+        :root { --bg: #FFF9E6; --orange: #D35400; --blue: #2E86C1; }
         * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
         
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--bg);
-            margin: 0; 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: space-between; /* Ensures nav stays at bottom */
-            height: 100vh;
-            padding: 20px 10px;
-            overflow: hidden;
+            margin: 0; padding: 10px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: space-between;
+            height: 100vh; overflow: hidden;
         }
 
-        .header { flex-shrink: 0; }
+        .header { margin-top: 10px; }
         .header h1 { font-size: 1.4rem; color: var(--orange); margin: 0; text-align: center; }
-        #counter { font-size: 0.9rem; color: #999; text-align: center; font-weight: bold; }
+        #counter { font-size: 1rem; color: #888; text-align: center; font-weight: bold; margin-top: 5px; }
 
-        .card-container { 
-            width: 90vw; 
-            max-width: 350px; 
-            height: 60vh; 
-            perspective: 1000px;
-            flex-grow: 0;
-            margin: 10px 0;
-        }
-        
+        .card-container { width: 90vw; max-width: 350px; height: 60vh; perspective: 1000px; }
         .card {
             width: 100%; height: 100%; position: relative;
             transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            cursor: pointer;
+            border-radius: 40px; box-shadow: 0 12px 25px rgba(0,0,0,0.1);
         }
         .card.is-flipped { transform: rotateY(180deg); }
 
@@ -56,81 +37,63 @@
             position: absolute; width: 100%; height: 100%;
             backface-visibility: hidden; -webkit-backface-visibility: hidden;
             display: flex; flex-direction: column; align-items: center;
-            justify-content: center; border-radius: 40px; border: 10px solid white; 
-            padding: 20px;
+            justify-content: center; border-radius: 40px; border: 10px solid white; padding: 20px;
         }
 
-        .card-front { background: var(--card-f); }
-        .card-back { background: var(--card-b); transform: rotateY(180deg); }
+        .card-front { background: #FFD93D; }
+        .card-back { background: #FFFFFF; transform: rotateY(180deg); }
 
         .emoji { font-size: 80px; margin-bottom: 10px; }
-        .punjabi { font-size: 2.5rem; color: var(--orange); text-align: center; margin: 0; font-weight: bold; }
+        .punjabi { font-size: 2.8rem; color: var(--orange); text-align: center; margin: 0; font-weight: bold; }
         
-        .pron { 
-            font-size: 1.1rem; color: #777; font-style: italic; 
-            background: #FFF4D1; padding: 5px 15px; border-radius: 12px; 
-            margin-bottom: 15px; text-align: center;
+        .pron-tag { 
+            font-size: 1.1rem; color: #666; font-style: italic; 
+            background: #FFF4D1; padding: 5px 15px; border-radius: 15px; margin-bottom: 15px;
         }
         
         .speaker-btn {
-            background: #FF6B6B; border: none; width: 70px; height: 70px;
+            background: #FF6B6B; border: none; width: 80px; height: 80px;
             border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 15px; box-shadow: 0 5px 15px rgba(255,107,107,0.3);
-            flex-shrink: 0;
+            margin-bottom: 20px; box-shadow: 0 6px 12px rgba(255,107,107,0.4);
         }
-        .speaker-btn svg { fill: white; width: 32px; }
+        .speaker-btn svg { fill: white; width: 40px; }
 
-        .lang-group { width: 100%; display: flex; flex-direction: column; gap: 5px; }
-        .meaning-row { text-align: center; }
-        .label { font-size: 0.6rem; color: #BBB; text-transform: uppercase; margin: 0; }
-        .meaning { font-size: 1.4rem; font-weight: bold; margin: 0; line-height: 1.1; }
+        .meaning-box { text-align: center; margin: 6px 0; width: 100%; }
+        .label { font-size: 0.6rem; color: #AAA; text-transform: uppercase; margin: 0; }
+        .val { font-size: 1.5rem; font-weight: bold; margin: 0; }
+        .eng { color: var(--blue); } .hin { color: #27AE60; } .tel { color: #8E44AD; }
 
-        .eng { color: #2E86C1; } .hin { color: #27AE60; } .tel { color: #8E44AD; }
-
-        /* Fixed Navigation Layout */
-        .nav { 
-            display: flex; 
-            gap: 30px; 
-            width: 100%; 
-            justify-content: center; 
-            padding-bottom: 10px;
-            flex-shrink: 0;
-        }
+        .nav { display: flex; gap: 30px; padding-bottom: 20px; }
         .btn {
             background: white; border: none; padding: 15px 35px;
-            border-radius: 20px; font-weight: bold; color: #888;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 1rem;
-            cursor: pointer;
+            border-radius: 20px; font-weight: bold; color: #666;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; font-size: 1rem;
         }
-        .btn:active { transform: scale(0.95); }
+        .btn:active { background: #f0f0f0; transform: scale(0.95); }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>1-Minute Punjabi</h1>
-        <div id="counter">Card 1</div>
+        <div id="counter">Connecting to words.js...</div>
     </div>
 
     <div class="card-container">
-        <div class="card" id="mainCard" onclick="handleCardClick(event)">
-            <!-- FRONT -->
+        <div class="card" id="mainCard" onclick="handleInteraction(event)">
             <div class="card-face card-front">
-                <div class="emoji" id="e"></div>
-                <h2 class="punjabi" id="p"></h2>
-                <p style="color:rgba(0,0,0,0.2); font-weight:bold; margin-top:30px; font-size: 0.8rem;">TAP TO LEARN</p>
+                <div class="emoji" id="e">✨</div>
+                <h2 class="punjabi" id="p">Loading...</h2>
+                <div style="color:rgba(0,0,0,0.2); font-weight:bold; margin-top:30px;">TAP TO FLIP</div>
             </div>
-            <!-- BACK -->
             <div class="card-face card-back">
-                <button class="speaker-btn" id="audioBtn">
+                <button class="speaker-btn" onclick="playAudio(event)">
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                 </button>
-                <div class="pron" id="pr"></div>
-                <div class="lang-group">
-                    <div class="meaning-row"><p class="label">English</p><p class="meaning eng" id="en"></p></div>
-                    <div class="meaning-row"><p class="label">Hindi</p><p class="meaning hin" id="hi"></p></div>
-                    <div class="meaning-row"><p class="label">Telugu</p><p class="meaning tel" id="te"></p></div>
-                </div>
+                <div class="pron-tag" id="pr"></div>
+                <div class="meaning-box"><p class="label">English</p><p class="val eng" id="en"></p></div>
+                <div class="meaning-box"><p class="label">Hindi</p><p class="val hin" id="hi"></p></div>
+                <div class="meaning-box"><p class="label">Telugu</p><p class="val tel" id="te"></p></div>
             </div>
         </div>
     </div>
@@ -144,70 +107,66 @@
         let idx = 0;
         const synth = window.speechSynthesis;
 
-        function update() {
-            // Check if library is loaded from words.js
-            if (typeof library === 'undefined' || library.length === 0) {
-                document.getElementById('counter').innerText = "ERROR: words.js not found!";
+        function updateUI() {
+            // Check if library is available
+            if (typeof library === 'undefined') {
+                document.getElementById('counter').innerText = "words.js NOT LOADED";
                 return;
             }
 
             const item = library[idx];
             document.getElementById('p').innerText = item.p;
-            document.getElementById('e').innerText = item.em || "✨";
-            document.getElementById('pr').innerText = item.pr || "";
-            document.getElementById('en').innerText = item.en || "";
-            document.getElementById('hi').innerText = item.hi || "";
-            document.getElementById('te').innerText = item.te || "";
-            document.getElementById('counter').innerText = `Card ${idx + 1} of ${library.length}`;
+            document.getElementById('e').innerText = item.em;
+            document.getElementById('pr').innerText = item.pr;
+            document.getElementById('en').innerText = item.en;
+            document.getElementById('hi').innerText = item.hi;
+            document.getElementById('te').innerText = item.te;
             
-            // Reset flip state when moving to next card
+            // This will now show "Card 1 of 100" correctly
+            document.getElementById('counter').innerText = `Card ${idx + 1} of ${library.length}`;
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
-        function handleCardClick(e) {
-            // If speaker icon clicked, don't flip
-            if (e.target.closest('#audioBtn')) {
-                e.stopPropagation();
-                speak();
-                return;
-            }
-
-            // Safari/Mobile Audio Unlock: speak a silent sound
+        function handleInteraction(e) {
+            // Wake up audio on very first tap (Requirement for iPhone/Chrome)
             const silent = new SpeechSynthesisUtterance("");
             synth.speak(silent);
 
+            if (e.target.closest('button')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
-        function speak() {
-            if (typeof library === 'undefined') return;
+        function playAudio(e) {
+            if(e) e.stopPropagation();
+            synth.cancel(); // Stop current speech
             
-            synth.cancel(); // Stop current voice
-            const msg = new SpeechSynthesisUtterance(library[idx].p);
-            msg.lang = 'pa-IN';
-            msg.rate = 0.8;
+            const text = library[idx].p;
+            const msg = new SpeechSynthesisUtterance(text);
             
-            // Find Punjabi voice or fallback to Hindi
+            // Language Settings
+            msg.lang = 'pa-IN'; 
+            msg.rate = 0.8; // Slower for clear learning
+            
+            // Pick Punjabi voice if available, else use Hindi (very similar)
             const voices = synth.getVoices();
-            const pVoice = voices.find(v => v.lang.includes('pa')) || voices.find(v => v.lang.includes('hi'));
-            if(pVoice) msg.voice = pVoice;
-            
+            const voice = voices.find(v => v.lang.includes('pa')) || voices.find(v => v.lang.includes('hi'));
+            if (voice) msg.voice = voice;
+
             synth.speak(msg);
         }
 
-        function move(step) {
+        function move(dir) {
             if (typeof library === 'undefined') return;
-            idx = (idx + step + library.length) % library.length;
-            update();
+            idx = (idx + dir + library.length) % library.length;
+            updateUI();
         }
 
-        // Initialize UI after load
+        // Initialize
         window.onload = () => {
-            // Small delay to ensure browser has parsed words.js
-            setTimeout(update, 100);
+            setTimeout(updateUI, 200); // Give library a moment to load
         };
 
-        // For Chrome Desktop voice loading
+        // Fix for Chrome Desktop voices
         if (speechSynthesis.onvoiceschanged !== undefined) {
             speechSynthesis.onvoiceschanged = () => synth.getVoices();
         }
