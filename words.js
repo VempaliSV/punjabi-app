@@ -1,4 +1,4 @@
-const library = [
+window.library = [
             // --- ESSENTIALS & COURTESIES ---
             { p: "ਹਾਂ", pr: "Haan", en: "Yes", hi: "हाँ", te: "అవును", e: "✅" },
             { p: "ਨਹੀਂ", pr: "Nahi", en: "No", hi: "नहीं", te: "కాదు", e: "❌" },
