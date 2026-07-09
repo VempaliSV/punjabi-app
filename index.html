@@ -122,24 +122,32 @@
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
-        function flipMe(e) {
-            // Unlock audio for mobile
-            const unlock = new SpeechSynthesisUtterance("");
-            synth.speak(unlock);
+        // 4. CARD FLIP LOGIC
+        function handleFlip(e) {
+            // If user clicked the pink speaker button, don't flip the card
+            if (e.target.closest('#speakBtn')) return;
             
-            if (e.target.closest('button')) return;
+            // Prime audio for mobile (Silent play on first tap)
+            if (audioPlayer.src === "") {
+                audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
+                audioPlayer.play();
+            }
+
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
+        // 5. AUDIO LOGIC (Gurmukhi Accent)
         function sayIt(e) {
+            if (e) e.stopPropagation(); // Stop card from flipping when button is pressed
+            
+            if (!window.library || !window.library[idx]) return;
+
             const text = window.library[idx].p;
-            // This is a high-quality Google TTS proxy URL for Punjabi accent (tl=pa)
+            // Native Punjabi Accent Engine URL
             const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
             
             audioPlayer.src = audioUrl;
-            audioPlayer.play().catch(error => {
-                console.log("Audio play failed, usually requires a user click first.");
-            });
+            audioPlayer.play().catch(err => console.log("Audio waiting for user tap."));
         }
 
         function nav(step) {
@@ -150,13 +158,6 @@
 
         // Initialize
         startApp();
-
-        // Fix for browsers that load voices asynchronously
-        if (speechSynthesis.onvoiceschanged !== undefined) {
-            speechSynthesis.onvoiceschanged = () => {
-                punjabiVoice = getPunjabiVoice();
-            };
-        }
     </script>
 </body>
 </html>
