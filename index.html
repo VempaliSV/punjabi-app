@@ -101,13 +101,21 @@
     <script>
         let idx = 0;
         const synth = window.speechSynthesis;
+        let punjabiVoice = null;
+
+        // LOAD VOICES CAREFULLY
+        function getPunjabiVoice() {
+            const voices = synth.getVoices();
+            // Look specifically for Punjabi, fallback to Hindi (phonetically similar)
+            return voices.find(v => v.lang === 'pa-IN') || 
+                   voices.find(v => v.lang.startsWith('pa')) || 
+                   voices.find(v => v.lang === 'hi-IN');
+        }
 
         function startApp() {
-            // Check if words are loaded in the window scope
             if (window.library && window.library.length > 0) {
                 render();
             } else {
-                // If not loaded yet, wait 500ms and try again
                 setTimeout(startApp, 500);
             }
         }
@@ -125,8 +133,9 @@
         }
 
         function flipMe(e) {
-            // "Prime" the audio for Mobile Safari/Chrome
-            synth.speak(new SpeechSynthesisUtterance(""));
+            // Unlock audio for mobile
+            const unlock = new SpeechSynthesisUtterance("");
+            synth.speak(unlock);
             
             if (e.target.closest('button')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
@@ -134,14 +143,22 @@
 
         function sayIt(e) {
             if(e) e.stopPropagation();
-            synth.cancel();
-            const msg = new SpeechSynthesisUtterance(window.library[idx].p);
-            msg.lang = 'pa-IN';
-            msg.rate = 0.8;
+            synth.cancel(); // Stop current speech
             
-            const voices = synth.getVoices();
-            const v = voices.find(v => v.lang.includes('pa')) || voices.find(v => v.lang.includes('hi'));
-            if(v) msg.voice = v;
+            const item = window.library[idx];
+            const msg = new SpeechSynthesisUtterance(item.p);
+            
+            const voice = getPunjabiVoice();
+            if (voice) {
+                msg.voice = voice;
+                msg.lang = voice.lang;
+            } else {
+                msg.lang = 'pa-IN';
+            }
+
+            msg.rate = 0.7; // Slow down for kids
+            msg.pitch = 1.1; // Friendly tone
+            
             synth.speak(msg);
         }
 
@@ -151,12 +168,14 @@
             render();
         }
 
-        // Start checking for data immediately
+        // Initialize
         startApp();
 
-        // Standard voice loading fix
+        // Fix for browsers that load voices asynchronously
         if (speechSynthesis.onvoiceschanged !== undefined) {
-            speechSynthesis.onvoiceschanged = () => synth.getVoices();
+            speechSynthesis.onvoiceschanged = () => {
+                punjabiVoice = getPunjabiVoice();
+            };
         }
     </script>
 </body>
