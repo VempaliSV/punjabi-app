@@ -78,6 +78,25 @@ window.library = [
             { p: "ਤੁਸੀਂ ਕੌਣ ਹੋ?", pr: "Tusi kaun ho?", en: "Who are you?", hi: "आप कौन हैं?", te: "మీరు ఎవరు?", em: "👤" },
             { p: "ਕਿਉਂ?", pr: "Kiyun?", en: "Why?", hi: "क्यों?", te: "ఎందుకు?", em: "🤔" },
             { p: "ਕਦੋਂ?", pr: "Kadon?", en: "When?", hi: "कब?", te: "ఎప్పుడు?", em: "🕒" },
+            
+            // --- GREETINGS & INTRODUCTIONS ---
+                { p: "ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?", pr: "Tu-haa-da naa kee hai?", en: "What is your name?", hi: "आपका नाम क्या है?", te: "మీ పేరు ఏమిటి?", e: "📛" },
+                { p: "ਮੇਰਾ ਨਾਂ ... ਹੈ", pr: "Me-ra naa ... hai", en: "My name is ...", hi: "मेरा नाम ... है", te: "నా పేరు ...", e: "👤" },
+                { p: "ਕੀ ਹਾਲ ਹੈ?", pr: "Kee haal hai?", en: "How's it going? / How are you?", hi: "क्या हाल है?", te: "ఎలా ఉన్నారు?", e: "👋" },
+                { p: "ਸਭ ਠੀਕ ਹੈ", pr: "Sabh theek hai", en: "Everything is fine", hi: "सब ठीक है", te: "అంతా బాగుంది", e: "👍" },
+                { p: "ਫੇਰ ਮਿਲਾਂਗੇ", pr: "Pher mi-lan-ge", en: "See you again / See you later", hi: "फिर मिलेंगे", te: "మళ్ళీ కలుద్దాం", e: "👋" },
+            
+                // --- EVERYDAY REACTIONS ---
+                { p: "ਕੋਈ ਗੱਲ ਨਹੀਂ", pr: "Ko-ee gall na-hi", en: "No problem / It's okay", hi: "कोई बात नहीं", te: "పర్వాలేదు", e: "😌" },
+                { p: "ਵਾਹ ਬਈ ਵਾਹ!", pr: "Vaah bai vaah!", en: "Wow! / Excellent!", hi: "वाह भाई वाह!", te: "వావ్! అద్భుతం!", e: "🤩" },
+                { p: "ਐਵੇਂ ਹੀ", pr: "Ai-vein hi", en: "Just like that / For no reason", hi: "ऐसे ही", te: "ఊరికే", e: "🤷" },
+                { p: "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ", pr: "Mai-nu na-hi pa-ta", en: "I don't know", hi: "मुझे नहीं पता", te: "నాకు తెలియదు", e: "🤷‍♂️" },
+            
+                // --- NEEDS & EXPRESSIONS ---
+                { p: "ਕੀ ਬਣਿਆ?", pr: "Kee ban-ya?", en: "What happened?", hi: "क्या हुआ?", te: "ఏమైంది?", e: "🧐" },
+                { p: "ਮੈਨੂੰ ਭੁੱਖ ਲੱਗੀ ਹੈ", pr: "Mai-nu bhukh lag-gee hai", en: "I am hungry", hi: "मुझे भूख लगी है", te: "నాకు ఆకలిగా ఉంది", e: "😋" },
+                { p: "ਤਿਆਰ ਹੋ ਜਾਓ", pr: "Tya-ar ho ja-o", en: "Get ready", hi: "तैयार हो जाओ", te: "తయారవ్వండి", e: "👟" },
+                { p: "ਰੱਬ ਰਾਖਾ", pr: "Rabb raa-kha", en: "God be with you / Goodbye", hi: "भगवान भला करे", te: "దేవుడే రక్షకుడు", e: "🙌" },
         
             // --- ADJECTIVES & EMOTIONS ---
             { p: "ਖੁਸ਼", pr: "Khush", en: "Happy", hi: "खुश", te: "సంతోషం", em: "😊" },
