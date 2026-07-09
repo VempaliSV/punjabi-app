@@ -142,24 +142,14 @@
         }
 
         function sayIt(e) {
-            if(e) e.stopPropagation();
-            synth.cancel(); // Stop current speech
+            const text = window.library[idx].p;
+            // This is a high-quality Google TTS proxy URL for Punjabi accent (tl=pa)
+            const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
             
-            const item = window.library[idx];
-            const msg = new SpeechSynthesisUtterance(item.pr);
-            
-            const voice = getPunjabiVoice();
-            if (voice) {
-                msg.voice = voice;
-                msg.lang = voice.lang;
-            } else {
-                msg.lang = 'pa-IN';
-            }
-
-            msg.rate = 0.7; // Slow down for kids
-            msg.pitch = 1.1; // Friendly tone
-            
-            synth.speak(msg);
+            audioPlayer.src = audioUrl;
+            audioPlayer.play().catch(error => {
+                console.log("Audio play failed, usually requires a user click first.");
+            });
         }
 
         function nav(step) {
