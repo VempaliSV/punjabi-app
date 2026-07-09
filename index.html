@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>1-Minute Punjabi</title>
+    
+    <!-- Load Data -->
     <script src="words.js"></script>
 
     <style>
         :root { --bg: #FFF9E6; --orange: #D35400; --card-f: #FFD93D; }
         * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--bg);
@@ -17,8 +20,10 @@
             align-items: center; justify-content: space-between;
             height: 100vh; overflow: hidden;
         }
+
         .header h1 { font-size: 1.4rem; color: var(--orange); margin: 5px 0 0 0; }
         #counter { font-size: 1rem; color: #888; font-weight: bold; margin-bottom: 5px; }
+
         .card-container { width: 90vw; max-width: 350px; height: 62vh; perspective: 1000px; }
         .card {
             width: 100%; height: 100%; position: relative;
@@ -26,40 +31,47 @@
             border-radius: 40px; box-shadow: 0 12px 25px rgba(0,0,0,0.1);
         }
         .card.is-flipped { transform: rotateY(180deg); }
+
         .card-face {
             position: absolute; width: 100%; height: 100%;
             backface-visibility: hidden; -webkit-backface-visibility: hidden;
             display: flex; flex-direction: column; align-items: center;
             justify-content: center; border-radius: 40px; border: 10px solid white; padding: 20px;
         }
+
         .card-front { background: var(--card-f); }
         .card-back { background: #FFFFFF; transform: rotateY(180deg); }
+
         .emoji { font-size: 80px; margin-bottom: 10px; }
         .punjabi { font-size: 2.8rem; color: var(--orange); text-align: center; margin: 0; font-weight: bold; }
         .pron-tag { font-size: 1.1rem; color: #666; font-style: italic; background: #FFF4D1; padding: 5px 15px; border-radius: 15px; margin-bottom: 10px; }
+        
         .speaker-btn {
             background: #FF6B6B; border: none; width: 75px; height: 75px;
             border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
             margin-bottom: 15px; box-shadow: 0 6px 12px rgba(255,107,107,0.3);
         }
         .speaker-btn svg { fill: white; width: 35px; }
+
         .m-box { text-align: center; margin: 5px 0; width: 100%; }
         .m-label { font-size: 0.6rem; color: #AAA; text-transform: uppercase; margin: 0; }
         .m-val { font-size: 1.4rem; font-weight: bold; margin: 0; }
         .eng { color: #2E86C1; } .hin { color: #27AE60; } .tel { color: #8E44AD; }
+
         .nav { display: flex; gap: 30px; margin-bottom: 20px; }
         .btn {
             background: white; border: none; padding: 15px 35px;
             border-radius: 25px; font-weight: bold; color: #666;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; font-size: 1rem;
         }
+        .btn:active { transform: scale(0.95); background: #eee; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>1-Minute Punjabi</h1>
-        <div id="counter">Loading...</div>
+        <div id="counter">Searching for words.js...</div>
     </div>
 
     <div class="card-container">
@@ -73,7 +85,7 @@
                 <button class="speaker-btn" onclick="sayIt(event)">
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                 </button>
-                <div class="pron-tag" id="p"></div>
+                <div class="pron-tag" id="pr"></div>
                 <div class="m-box"><p class="m-label">English</p><p class="m-val eng" id="en"></p></div>
                 <div class="m-box"><p class="m-label">Hindi</p><p class="m-val hin" id="hi"></p></div>
                 <div class="m-box"><p class="m-label">Telugu</p><p class="m-val tel" id="te"></p></div>
@@ -89,10 +101,23 @@
     <script>
         let idx = 0;
         const synth = window.speechSynthesis;
+        let punjabiVoice = null;
+
+        // LOAD VOICES CAREFULLY
+        function getPunjabiVoice() {
+            const voices = synth.getVoices();
+            // Look specifically for Punjabi, fallback to Hindi (phonetically similar)
+            return voices.find(v => v.lang === 'pa-IN') || 
+                   voices.find(v => v.lang.startsWith('pa')) || 
+                   voices.find(v => v.lang === 'hi-IN');
+        }
 
         function startApp() {
-            if (window.library && window.library.length > 0) { render(); } 
-            else { setTimeout(startApp, 500); }
+            if (window.library && window.library.length > 0) {
+                render();
+            } else {
+                setTimeout(startApp, 500);
+            }
         }
 
         function render() {
@@ -108,42 +133,32 @@
         }
 
         function flipMe(e) {
-            // "Prime" audio for mobile
-            synth.speak(new SpeechSynthesisUtterance(""));
+            // Unlock audio for mobile
+            const unlock = new SpeechSynthesisUtterance("");
+            synth.speak(unlock);
+            
             if (e.target.closest('button')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
         function sayIt(e) {
             if(e) e.stopPropagation();
-            synth.cancel();
+            synth.cancel(); // Stop current speech
             
             const item = window.library[idx];
-            const msg = new SpeechSynthesisUtterance();
-            const voices = synth.getVoices();
-
-            // Find Punjabi Voice
-            const pVoice = voices.find(v => v.lang.includes('pa-IN')) || voices.find(v => v.lang.includes('pa'));
-            // Find Hindi Voice (Accent Fallback)
-            const hVoice = voices.find(v => v.lang.includes('hi-IN')) || voices.find(v => v.lang.includes('hi'));
-
-            if (pVoice) {
-                msg.voice = pVoice;
-                msg.text = item.p;
-                msg.lang = 'pa-IN';
-            } else if (hVoice) {
-                // If no Punjabi voice, use Hindi voice to read Hindi translation
-                // This creates a much more natural Indian accent
-                msg.voice = hVoice;
-                msg.text = item.hi;
-                msg.lang = 'hi-IN';
+            const msg = new SpeechSynthesisUtterance(item.pr);
+            
+            const voice = getPunjabiVoice();
+            if (voice) {
+                msg.voice = voice;
+                msg.lang = voice.lang;
             } else {
-                msg.text = item.p;
                 msg.lang = 'pa-IN';
             }
 
-            msg.rate = 0.75; // Clear speed
-            msg.pitch = 1;
+            msg.rate = 0.7; // Slow down for kids
+            msg.pitch = 1.1; // Friendly tone
+            
             synth.speak(msg);
         }
 
@@ -153,9 +168,14 @@
             render();
         }
 
+        // Initialize
         startApp();
+
+        // Fix for browsers that load voices asynchronously
         if (speechSynthesis.onvoiceschanged !== undefined) {
-            speechSynthesis.onvoiceschanged = () => synth.getVoices();
+            speechSynthesis.onvoiceschanged = () => {
+                punjabiVoice = getPunjabiVoice();
+            };
         }
     </script>
 </body>
