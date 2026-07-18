@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>1-Minute Punjabi</title>
     
-    <!-- Load Data -->
     <script src="words.js"></script>
 
     <style>
@@ -52,6 +51,9 @@
             margin-bottom: 15px; box-shadow: 0 6px 12px rgba(255,107,107,0.3);
         }
         .speaker-btn svg { fill: white; width: 35px; }
+        .speaker-btn.loading { opacity: 0.5; animation: pulse 1s infinite; }
+
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; } }
 
         .m-box { text-align: center; margin: 5px 0; width: 100%; }
         .m-label { font-size: 0.6rem; color: #AAA; text-transform: uppercase; margin: 0; }
@@ -64,14 +66,13 @@
             border-radius: 25px; font-weight: bold; color: #666;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; font-size: 1rem;
         }
-        .btn:active { transform: scale(0.95); background: #eee; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>1-Minute Punjabi</h1>
-        <div id="counter">Searching for words.js...</div>
+        <div id="counter">Loading Library...</div>
     </div>
 
     <div class="card-container">
@@ -82,7 +83,8 @@
                 <div style="color:rgba(0,0,0,0.2); font-weight:bold; margin-top:30px;">TAP TO START</div>
             </div>
             <div class="card-face card-back">
-                <button class="speaker-btn" onclick="sayIt(event)">
+                <!-- ADDED id="speakBtn" HERE -->
+                <button class="speaker-btn" id="speakBtn" onclick="sayIt(event)">
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                 </button>
                 <div class="pron-tag" id="pr"></div>
@@ -123,21 +125,19 @@
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
-        // 4. CARD FLIP LOGIC
         function flipMe(e) {
-            // If user clicked the pink speaker button, don't flip the card
+            // FIXED: Proper check to see if the button or its SVG was clicked
             if (e.target.closest('#speakBtn')) return;
             
             // Prime audio for mobile (Silent play on first tap)
             if (audioPlayer.src === "") {
                 audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
-                audioPlayer.play();
+                audioPlayer.play().catch(e => console.log("Audio primed"));
             }
 
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
-        // 5. AUDIO LOGIC (Gurmukhi Accent)
         async function sayIt(e) {
             if (e) e.stopPropagation();
             
@@ -156,7 +156,7 @@
                     },
                     body: JSON.stringify({
                         inputs: [textToSpeak],
-                        target_language_code: "pa-IN", // Punjabi
+                        target_language_code: "pa-IN",
                         speaker: "shubh",
                         model: "bulbul:v1" 
                     })
@@ -165,14 +165,14 @@
                 const data = await response.json();
                 
                 if (data.audios && data.audios[0]) {
-                    // Sarvam returns a Base64 string
                     const base64Audio = data.audios[0];
                     audioPlayer.src = `data:audio/wav;base64,${base64Audio}`;
                     audioPlayer.play();
+                } else {
+                    console.error("API error: No audio returned", data);
                 }
             } catch (error) {
                 console.error("Sarvam AI Error:", error);
-                alert("Voice service busy, try again!");
             } finally {
                 btn.classList.remove('loading');
             }
@@ -184,7 +184,6 @@
             render();
         }
 
-        // Initialize
         startApp();
     </script>
 </body>
