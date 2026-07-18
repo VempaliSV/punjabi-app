@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>1-Minute Punjabi</title>
     
-    <!-- Modern App Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#FFD93D">
 
-    <!-- DATA SECTION (Fixed: Now wrapped in script tags) -->
     <script>
+        // DATA SECTION
         window.library = [            
             { p: "ਹਾਂ", pr: "Haan", en: "Yes", hi: "हाँ", te: "అవును", em: "✅" },
             { p: "ਨਹੀਂ", pr: "Nahi", en: "No", hi: "नहीं", te: "కాదు", em: "❌" },
@@ -37,65 +36,38 @@
             { p: "ਫਲ", pr: "Phal", en: "Fruit", hi: "फल", te: "పండు", em: "🍌" },
             { p: "ਸਬਜ਼ੀ", pr: "Sabzee", en: "Vegetable", hi: "सब्जी", te: "కూరగాయ", em: "🥦" },
             { p: "ਅੱਜ", pr: "Ajj", en: "Today", hi: "आज", te: "ఈరోజు", em: "📅" },
-            { p: "ਕੱੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", em: "⏳" },
+            { p: "ਕੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", em: "⏳" },
             { p: "ਇੱਕ", pr: "Ikk", en: "One", hi: "एक", te: "ఒకటి", em: "1️⃣" },
             { p: "ਦੋ", pr: "Do", en: "Two", hi: "दो", te: "రెండు", em: "2️⃣" },
             { p: "ਤਿੰਨ", pr: "Tinn", en: "Three", hi: "तीन", te: "మూడు", em: "3️⃣" },
             { p: "ਲਾਲ", pr: "Laal", en: "Red", hi: "लाल", te: "ఎరుపు", em: "🔴" },
-            { p: "ਨੀਲਾ", pr: "Neela", en: "Blue", hi: "नीला", te: "నీలం", em: "🔵" },
+            { p: "ਨੀਲਾ", pr: "Neela", en: "Blue", hi: "ਨੀਲਾ", te: "నీలం", em: "🔵" },
             { p: "ਹਰਾ", pr: "Haraa", en: "Green", hi: "हरा", te: "ఆకుపచ్చ", em: "🟢" },
-            { p: "ਪੀਲਾ", pr: "Peela", en: "Yellow", hi: "पीला", te: "पసుపు", em: "🟡" },
+            { p: "ਪੀਲਾ", pr: "Peela", en: "Yellow", hi: "पीला", te: "पसुपु", em: "🟡" },
             { p: "ਕਾਲਾ", pr: "Kaala", en: "Black", hi: "काला", te: "నలుపు", em: "⚫" },
-            { p: "ਚਿੱੱਟਾ", pr: "Chitta", en: "White", hi: "सफेद", te: "తెలుపు", em: "⚪" },
+            { p: "ਚਿੱਟਾ", pr: "Chitta", en: "White", hi: "सफेद", te: "తెలుపు", em: "⚪" },
             { p: "ਗੁਲਾਬੀ", pr: "Gulaabi", en: "Pink", hi: "गुलाबी", te: "గులాబీ", em: "🌸" },
-            { p: "ਕੁੱੱਤਾ", pr: "Kutta", en: "Dog", hi: "कुत्ता", te: "కుక్క", em: "🐶" },
-            { p: "ਬਿੱੱਲੀ", pr: "Billi", en: "Cat", hi: "बिल्ली", te: "పిల్లి", em: "🐱" },
+            { p: "ਕੁੱਤਾ", pr: "Kutta", en: "Dog", hi: "कुत्ता", te: "కుక్క", em: "🐶" },
+            { p: "ਬਿੱਲੀ", pr: "Billi", en: "Cat", hi: "बिल्ली", te: "పిల్లి", em: "🐱" },
             { p: "ਗਾਂ", pr: "Gaan", en: "Cow", hi: "गाय", te: "ఆవు", em: "🐄" },
             { p: "ਘੋੜਾ", pr: "Ghora", en: "Horse", hi: "घोड़ा", te: "గుర్రం", em: "🐴" },
             { p: "ਸ਼ੇਰ", pr: "Sher", en: "Lion", hi: "शेर", te: "సింహం", em: "🦁" },
             { p: "ਪੰਛੀ", pr: "Panchhi", en: "Bird", hi: "पक्षी", te: "పక్షి", em: "🐦" },
-            { p: "ਮੱੱਛੀ", pr: "Machhi", en: "Fish", hi: "मछली", te: "చేప", em: "🐟" },
+            { p: "ਮੱਛੀ", pr: "Machhi", en: "Fish", hi: "मछली", te: "చేప", em: "🐟" },
             { p: "ਅੱਖ", pr: "Akkh", en: "Eye", hi: "आँख", te: "కన్ను", em: "👁️" },
             { p: "ਕੰਨ", pr: "Kann", en: "Ear", hi: "कान", te: "చెవి", em: "👂" },
-            { p: "ਨੱਕ", pr: "Nakk", en: "Nose", hi: "नाक", te: "मुక్కు", em: "👃" },
-            { p: "ਹੱੱਥ", pr: "Hatth", en: "Hand", hi: "हाथ", te: "చెయ్యి", em: "✋" },
+            { p: "ਨੱਕ", pr: "Nakk", en: "Nose", hi: "नाक", te: "ముక్కు", em: "👃" },
+            { p: "ਹੱਥ", pr: "Hatth", en: "Hand", hi: "हाथ", te: "చెయ్యి", em: "✋" },
             { p: "ਪੈਰ", pr: "Pair", en: "Foot / Leg", hi: "पैर", te: "కాలు", em: "🦶" },
             { p: "ਸਿਰ", pr: "Sir", en: "Head", hi: "सिर", te: "తల", em: "👤" },
             { p: "ਦਿਲ", pr: "Dil", en: "Heart", hi: "दिल", te: "గుండె", em: "❤️" },
             { p: "ਸੂਰਜ", pr: "Sooraj", en: "Sun", hi: "सूरज", te: "సూర్యుడు", em: "☀️" },
-            { p: "ਚੰਦ", pr: "Chand", en: "Moon", hi: "चाँद", te: "చంద్రుడు", em: "🌙" },
+            { p: "ਚੰਦ", pr: "Chand", en: "Moon", hi: "चाँਦ", te: "చంద్రుడు", em: "🌙" },
             { p: "ਅਸਮਾਨ", pr: "Asmaan", en: "Sky", hi: "आसमान", te: "ఆకాశం", em: "☁️" },
             { p: "ਮੀਂਹ", pr: "Meenh", en: "Rain", hi: "बारिश", te: "వర్షం", em: "🌧️" },
             { p: "ਹਵਾ", pr: "Hava", en: "Wind / Air", hi: "हवा", te: "గాలి", em: "💨" },
-            { p: "ਅੱੱਗ", pr: "Agg", en: "Fire", hi: "आग", te: "నిప్పు", em: "🔥" },
-            { p: "ਦਰਖਤ", pr: "Darakhat", en: "Tree", hi: "पेड़", te: "చెట్టు", em: "🌳" },
-            { p: "ਇਹ ਕੀ ਹੈ?", pr: "Eh kee hai?", en: "What is this?", hi: "यह क्या है?", te: "ఇది ఏమిటి?", em: "❓" },
-            { p: "ਇਹ ਕਿੱੱਥੇ ਹੈ?", pr: "Eh kitthe hai?", en: "Where is it?", hi: "यह कहाँ है?", te: "ఇది ఎక్కడ ఉంది?", em: "📍" },
-            { p: "ਤੁਸੀਂ ਕੌਣ ਹੋ?", pr: "Tusi kaun ho?", en: "Who are you?", hi: "आप कौन हैं?", te: "మీరు ఎవరు?", em: "👤" },
-            { p: "ਕਿਉਂ?", pr: "Kiyun?", en: "Why?", hi: "क्यों?", te: "ఎందుకు?", em: "🤔" },
-            { p: "ਕਦੋਂ?", pr: "Kadon?", en: "When?", hi: "कब?", te: "ఎప్పుడు?", em: "🕒" },
-            { p: "ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?", pr: "Tu-haa-da naa kee hai?", en: "What is your name?", hi: "आपका नाम क्या है?", te: "మీ పేరు ఏమిటి?", em: "📛" },
-            { p: "ਮੇਰਾ ਨਾਂ ... ਹੈ", pr: "Me-ra naa ... hai", en: "My name is ...", hi: "मेरा नाम ... है", te: "నా పేరు ...", em: "👤" },
-            { p: "ਕੀ ਹਾਲ ਹੈ?", pr: "Kee haal hai?", en: "How's it going?", hi: "क्या हाल है?", te: "ఎలా ఉన్నారు?", em: "👋" },
-            { p: "ਸਭ ਠੀਕ ਹੈ", pr: "Sabh theek hai", en: "Everything is fine", hi: "सब ठीक है", te: "అంతా బాగుంది", em: "👍" },
-            { p: "ਫੇਰ ਮਿਲਾਂਗੇ", pr: "Pher mi-lan-ge", en: "See you again", hi: "फिर मिलेंगे", te: "మళ్ళీ కలుద్దాం", em: "👋" },
-            { p: "ਕੋਈ ਗੱੱਲ ਨਹੀਂ", pr: "Ko-ee gall na-hi", en: "No problem", hi: "कोई बात नहीं", te: "పర్వాలేదు", em: "😌" },
-            { p: "ਵਾਹ ਬਈ ਵਾਹ!", pr: "Vaah bai vaah!", en: "Wow! Excellent!", hi: "वाह भाई वाह!", te: "వావ్! అద్భుతం!", em: "🤩" },
-            { p: "ਐਵੇਂ ਹੀ", pr: "Ai-vein hi", en: "Just like that", hi: "ऐसे ही", te: "ఊరికే", em: "🤷" },
-            { p: "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ", pr: "Mai-nu na-hi pa-ta", en: "I don't know", hi: "मुझे नहीं पता", te: "నాకు తెలియదు", em: "🤷‍♂️" },
-            { p: "ਕੀ ਬਣਿਆ?", pr: "Kee ban-ya?", en: "What happened?", hi: "क्या हुआ?", te: "ఏమైంది?", em: "🧐" },
-            { p: "ਮੈਨੂੰ ਭੁੱਖ ਲੱੱਗੀ ਹੈ", pr: "Mai-nu bhukh lag-gee hai", en: "I am hungry", hi: "मुझे भूख लगी है", te: "నాకు ఆకలిగా ఉంది", em: "😋" },
-            { p: "ਤਿਆਰ ਹੋ ਜਾਓ", pr: "Tya-ar ho ja-o", en: "Get ready", hi: "तैयार हो जाओ", te: "తయారవ్వండి", em: "👟" },
-            { p: "ਰੱੱਬ ਰਾਖਾ", pr: "Rabb raa-kha", en: "Goodbye", hi: "भगवान भला करे", te: "దేవుడే రక్షకుడు", em: "🙌" },
-            { p: "ਖੁਸ਼", pr: "Khush", en: "Happy", hi: "खुश", te: "సంతోషం", em: "😊" },
-            { p: "ਉਦਾਸ", pr: "Udaas", en: "Sad", hi: "उदास", te: "బాధ", em: "😢" },
-            { p: "ਵੱੱਡਾ", pr: "Vadda", en: "Big", hi: "बड़ा", te: "పెద్ద", em: "🐘" },
-            { p: "ਛੋਟਾ", pr: "Chhota", en: "Small", hi: "छोटा", te: "చిన్న", em: "🐭" },
-            { p: "ਗਰਮ", pr: "Garam", en: "Hot", hi: "गरम", te: "वेड़ी", em: "🔥" },
-            { p: "ਠੰਢਾ", pr: "Thandhaa", en: "Cold", hi: "ठंडा", te: "చల్లని", em: "❄️" },
-            { p: "ਚੰਗਾ", pr: "Changa", en: "Good", hi: "अच्छा", te: "మంచి", em: "👍" },
-            { p: "ਬੁਰਾ", pr: "Bura", en: "Bad", hi: "बुरा", te: "చెడు", em: "👎" },
-            { p: "ਸੋਹਣਾ", pr: "Sohna", en: "Beautiful", hi: "सुंदर", te: "అందమైన", em: "✨" }
+            { p: "ਅੱਗ", pr: "Agg", en: "Fire", hi: "आग", te: "నిప్పు", em: "🔥" },
+            { p: "ਦਰਖਤ", pr: "Darakhat", en: "Tree", hi: "पेड़", te: "చెట్టు", em: "🌳" }
         ];
     </script>
 
@@ -122,7 +94,7 @@
             height: 100dvh; overflow: hidden;
         }
 
-        .header { text-align: center; padding-top: 15px; flex-shrink: 0; }
+        .header { text-align: center; padding-top: 15px; }
         .header h1 { font-size: 1.5rem; color: var(--orange); margin: 0; }
         #counter { font-size: 1rem; color: #888; font-weight: bold; margin-top: 5px; }
 
@@ -171,7 +143,7 @@
         .hin { color: var(--green); } 
         .tel { color: var(--purple); }
 
-        .nav { display: flex; gap: 30px; padding-bottom: 25px; flex-shrink: 0; }
+        .nav { display: flex; gap: 30px; padding-bottom: 25px; }
         .btn {
             background: white; border: none; padding: 15px 35px;
             border-radius: 20px; font-weight: bold; color: #666;
@@ -213,7 +185,7 @@
 
     <script>
         let currentIdx = 0;
-        const player = new Audio();
+        const synth = window.speechSynthesis;
 
         function render() {
             if (!window.library || window.library.length === 0) return;
@@ -229,22 +201,34 @@
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
+        // Logic to force audio to work on Mobile browsers
         function handleFlip(e) {
-            // "Wake up" audio for mobile
-            if (player.src === "") {
-                player.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
-                player.play().catch(() => {});
-            }
+            // Browsers block sound until user interaction. 
+            // This silent speak "primes" the audio engine.
+            const silent = new SpeechSynthesisUtterance("");
+            synth.speak(silent);
+
             if (e.target.closest('#audioTrigger')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
         function playAudio(e) {
             if (e) e.stopPropagation();
+            
+            synth.cancel(); // Stop any current sound
+            
             const text = window.library[currentIdx].p;
-            const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
-            player.src = url;
-            player.play().catch(err => console.log("Audio Error"));
+            const msg = new SpeechSynthesisUtterance(text);
+            
+            // Try to find a Punjabi voice, fallback to Hindi (very similar)
+            const voices = synth.getVoices();
+            const punjabiVoice = voices.find(v => v.lang.includes('pa') || v.lang.includes('hi'));
+            
+            if (punjabiVoice) msg.voice = punjabiVoice;
+            msg.lang = 'pa-IN';
+            msg.rate = 0.8; // Slow for kids
+            
+            synth.speak(msg);
         }
 
         function move(dir) {
@@ -253,7 +237,14 @@
             render();
         }
 
-        window.onload = render;
+        window.onload = () => {
+            render();
+            // Pre-load voices for Chrome
+            synth.getVoices();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = synth.getVoices;
+            }
+        };
     </script>
 </body>
 </html>
