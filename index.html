@@ -2,43 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>1-Minute Punjabi</title>
-     <!-- Modern Web App Meta Tags -->
+    
+    <!-- Modern App Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#FFD93D">
-    
-    <!-- App Icon for Home Screen -->
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/197/197601.png">
-    
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- This links to your external words.js file -->
+
+    <!-- Linking your words.js file -->
     <script src="words.js"></script>
 
     <style>
-        :root { --bg: #FFF9E6; --orange: #D35400; --card-f: #FFD93D; }
+        :root { 
+            --bg: #FFF9E6; 
+            --card-front: #FFD93D; 
+            --card-back: #FFFFFF; 
+            --orange: #D35400; 
+            --blue: #2E86C1;
+            --green: #27AE60;
+            --purple: #8E44AD;
+        }
+
         * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
         
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--bg);
-            margin: 0; padding: 10px;
+            margin: 0; 
+            padding: env(safe-area-inset-top) 15px env(safe-area-inset-bottom) 15px;
             display: flex; flex-direction: column;
             align-items: center; justify-content: space-between;
-            height: 100vh; overflow: hidden;
+            height: 100dvh; overflow: hidden;
         }
 
-        .header h1 { font-size: 1.4rem; color: var(--orange); margin: 10px 0 0 0; }
+        .header { text-align: center; padding-top: 15px; flex-shrink: 0; }
+        .header h1 { font-size: 1.5rem; color: var(--orange); margin: 0; }
         #counter { font-size: 1rem; color: #888; font-weight: bold; margin-top: 5px; }
 
-        .card-container { width: 90vw; max-width: 350px; height: 60vh; perspective: 1000px; }
+        /* Magic Card Layout */
+        .card-container { 
+            width: 100%; max-width: 350px; 
+            height: 60vh; 
+            perspective: 1000px;
+            margin: 10px 0;
+        }
+        
         .card {
             width: 100%; height: 100%; position: relative;
             transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 40px; box-shadow: 0 12px 25px rgba(0,0,0,0.1); cursor: pointer;
+            border-radius: 40px; box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
         .card.is-flipped { transform: rotateY(180deg); }
 
@@ -46,124 +61,140 @@
             position: absolute; width: 100%; height: 100%;
             backface-visibility: hidden; -webkit-backface-visibility: hidden;
             display: flex; flex-direction: column; align-items: center;
-            justify-content: center; border-radius: 40px; border: 10px solid white; padding: 20px;
+            justify-content: center; border-radius: 40px; border: 10px solid white; padding: 25px;
         }
 
-        .card-front { background: var(--card-f); }
-        .card-back { background: #FFFFFF; transform: rotateY(180deg); }
+        .card-front { background: var(--card-front); }
+        .card-back { background: var(--card-back); transform: rotateY(180deg); }
 
-        .emoji { font-size: 80px; margin-bottom: 10px; }
+        /* Front Content */
+        .emoji { font-size: 90px; margin-bottom: 10px; }
         .punjabi { font-size: 2.8rem; color: var(--orange); text-align: center; margin: 0; font-weight: bold; }
-        .pron-tag { font-size: 1.1rem; color: #666; font-style: italic; background: #FFF4D1; padding: 5px 15px; border-radius: 15px; margin-bottom: 15px; }
-        
+        .hint { color: rgba(0,0,0,0.2); font-weight: bold; margin-top: 30px; font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* Back Content */
         .speaker-btn {
             background: #FF6B6B; border: none; width: 80px; height: 80px;
             border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 15px; box-shadow: 0 6px 12px rgba(255,107,107,0.3);
+            margin-bottom: 15px; box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
         }
         .speaker-btn svg { fill: white; width: 40px; }
-        .speaker-btn:active { transform: scale(0.9); }
+        .pron-tag { font-size: 1.1rem; color: #666; font-style: italic; background: #FFF4D1; padding: 6px 18px; border-radius: 15px; margin-bottom: 15px; }
 
-        .m-box { text-align: center; margin: 5px 0; width: 100%; }
-        .m-label { font-size: 0.6rem; color: #AAA; text-transform: uppercase; margin: 0; }
-        .m-val { font-size: 1.5rem; font-weight: bold; margin: 0; }
-        .eng { color: #2E86C1; } .hin { color: #27AE60; } .tel { color: #8E44AD; }
+        .m-box { text-align: center; margin: 6px 0; width: 100%; }
+        .m-label { font-size: 0.65rem; color: #AAA; text-transform: uppercase; margin: 0; font-weight: bold; }
+        .m-val { font-size: 1.5rem; font-weight: bold; margin: 0; line-height: 1.2; }
+        
+        .eng { color: var(--blue); } 
+        .hin { color: var(--green); } 
+        .tel { color: var(--purple); }
 
-        .nav { display: flex; gap: 30px; margin-bottom: 20px; }
+        /* Navigation Buttons */
+        .nav { display: flex; gap: 30px; padding-bottom: 25px; flex-shrink: 0; }
         .btn {
             background: white; border: none; padding: 15px 35px;
-            border-radius: 25px; font-weight: bold; color: #666;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; font-size: 1rem;
+            border-radius: 20px; font-weight: bold; color: #666;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); cursor: pointer; font-size: 1.1rem;
         }
+        .btn:active { background: #f0f0f0; transform: scale(0.95); }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>1-Minute Punjabi</h1>
-        <div id="counter">Loading...</div>
+        <div id="counter">Loading Cards...</div>
     </div>
 
     <div class="card-container">
         <div class="card" id="mainCard" onclick="handleFlip(event)">
-            <!-- FRONT -->
+            <!-- FRONT FACE -->
             <div class="card-face card-front">
-                <div class="emoji" id="e">⏳</div>
-                <h2 class="punjabi" id="p">Loading...</h2>
-                <div style="color:rgba(0,0,0,0.2); font-weight:bold; margin-top:30px;">TAP TO LEARN</div>
+                <div class="emoji" id="disp-e">✨</div>
+                <h2 class="punjabi" id="disp-p">...</h2>
+                <div class="hint">TAP TO REVEAL</div>
             </div>
-            <!-- BACK -->
+            <!-- BACK FACE -->
             <div class="card-face card-back">
-                <button class="speaker-btn" id="speakBtn" onclick="sayIt(event)">
+                <button class="speaker-btn" id="audioTrigger" onclick="playAudio(event)">
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                 </button>
-                <div class="pron-tag" id="pr"></div>
-                <div class="m-box"><p class="m-label">English</p><p class="m-val eng" id="en"></p></div>
-                <div class="m-box"><p class="m-label">Hindi</p><p class="m-val hin" id="hi"></p></div>
-                <div class="m-box"><p class="m-label">Telugu</p><p class="m-val tel" id="te"></p></div>
+                <div class="pron-tag" id="disp-pr"></div>
+                <div class="m-box"><p class="m-label">English</p><p class="m-val eng" id="disp-en"></p></div>
+                <div class="m-box"><p class="m-label">Hindi</p><p class="m-val hin" id="disp-hi"></p></div>
+                <div class="m-box"><p class="m-label">Telugu</p><p class="m-val tel" id="disp-te"></p></div>
             </div>
         </div>
     </div>
 
     <div class="nav">
-        <button class="btn" onclick="nav(-1)">Back</button>
-        <button class="btn" onclick="nav(1)">Next</button>
+        <button class="btn" onclick="move(-1)">Back</button>
+        <button class="btn" onclick="move(1)">Next</button>
     </div>
 
     <script>
-        let idx = 0;
-        let audioPlayer = new Audio();
+        let currentIdx = 0;
+        const player = new Audio();
 
-        function startApp() {
+        // 1. Check if words.js is loaded
+        function initApp() {
             if (window.library && window.library.length > 0) {
                 render();
             } else {
-                setTimeout(startApp, 500);
+                // If the file is still loading from server, check again in 200ms
+                setTimeout(initApp, 200);
             }
         }
 
+        // 2. Render the Card Data
         function render() {
-            const item = window.library[idx];
-            document.getElementById('p').innerText = item.p;
-            document.getElementById('e').innerText = item.em;
-            document.getElementById('pr').innerText = item.pr;
-            document.getElementById('en').innerText = item.en;
-            document.getElementById('hi').innerText = item.hi;
-            document.getElementById('te').innerText = item.te;
-            document.getElementById('counter').innerText = `Card ${idx + 1} of ${window.library.length}`;
+            const data = window.library[currentIdx];
+            document.getElementById('disp-p').innerText = data.p;
+            document.getElementById('disp-e').innerText = data.em;
+            document.getElementById('disp-pr').innerText = data.pr;
+            document.getElementById('disp-en').innerText = data.en;
+            document.getElementById('disp-hi').innerText = data.hi;
+            document.getElementById('disp-te').innerText = data.te;
+            
+            document.getElementById('counter').innerText = `Card ${currentIdx + 1} of ${window.library.length}`;
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
+        // 3. Flip Card Logic
         function handleFlip(e) {
-            if (e.target.closest('#speakBtn')) return;
-
-            // Safari/Chrome Unlock: Play silent sound on first click
-            if (audioPlayer.src === "") {
-                audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
-                audioPlayer.play().catch(err => console.log("Audio primed"));
+            // Unmute browser audio engine on first tap (Safari/iPhone requirement)
+            if (player.src === "") {
+                player.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
+                player.play().catch(() => {});
             }
 
+            // Prevent flip if the speaker button was clicked
+            if (e.target.closest('#audioTrigger')) return;
+            
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
-        function sayIt(e) {
-            if (e) e.stopPropagation();
+        // 4. Native Punjabi Audio Engine (Google TTS)
+        function playAudio(e) {
+            if (e) e.stopPropagation(); // Stop card from flipping
             
-            const text = window.library[idx].p;
-            // Native Punjabi Accent via Google TTS Proxy (tl=pa)
-            const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
+            const text = window.library[currentIdx].p;
+            // High-quality native Punjabi accent
+            const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
             
-            audioPlayer.src = audioUrl;
-            audioPlayer.play().catch(err => console.error("Audio error:", err));
+            player.src = url;
+            player.play().catch(err => console.log("Audio Error: User interaction required."));
         }
 
-        function nav(step) {
+        // 5. Navigation
+        function move(dir) {
             if (!window.library) return;
-            idx = (idx + step + window.library.length) % window.library.length;
+            currentIdx = (currentIdx + dir + window.library.length) % window.library.length;
             render();
         }
 
-        startApp();
+        // Start checking for library on load
+        initApp();
     </script>
 </body>
 </html>
