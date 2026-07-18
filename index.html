@@ -11,7 +11,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#FFD93D">
 
-    window.library = [            
+    <!-- DATA SECTION (Fixed: Now wrapped in script tags) -->
+    <script>
+        window.library = [            
             { p: "ਹਾਂ", pr: "Haan", en: "Yes", hi: "हाँ", te: "అవును", em: "✅" },
             { p: "ਨਹੀਂ", pr: "Nahi", en: "No", hi: "नहीं", te: "కాదు", em: "❌" },
             { p: "ਕਿਰਪਾ ਕਰਕੇ", pr: "Kirpa karke", en: "Please", hi: "कृपया", te: "దయచేసి", em: "🙏" },
@@ -35,28 +37,28 @@
             { p: "ਫਲ", pr: "Phal", en: "Fruit", hi: "फल", te: "పండు", em: "🍌" },
             { p: "ਸਬਜ਼ੀ", pr: "Sabzee", en: "Vegetable", hi: "सब्जी", te: "కూరగాయ", em: "🥦" },
             { p: "ਅੱਜ", pr: "Ajj", en: "Today", hi: "आज", te: "ఈరోజు", em: "📅" },
-            { p: "ਕੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", em: "⏳" },
+            { p: "ਕੱੱਲ੍ਹ", pr: "Kalh", en: "Tomorrow / Yesterday", hi: "कल", te: "రేపు / నిన్న", em: "⏳" },
             { p: "ਇੱਕ", pr: "Ikk", en: "One", hi: "एक", te: "ఒకటి", em: "1️⃣" },
             { p: "ਦੋ", pr: "Do", en: "Two", hi: "दो", te: "రెండు", em: "2️⃣" },
             { p: "ਤਿੰਨ", pr: "Tinn", en: "Three", hi: "तीन", te: "మూడు", em: "3️⃣" },
             { p: "ਲਾਲ", pr: "Laal", en: "Red", hi: "लाल", te: "ఎరుపు", em: "🔴" },
             { p: "ਨੀਲਾ", pr: "Neela", en: "Blue", hi: "नीला", te: "నీలం", em: "🔵" },
             { p: "ਹਰਾ", pr: "Haraa", en: "Green", hi: "हरा", te: "ఆకుపచ్చ", em: "🟢" },
-            { p: "ਪੀਲਾ", pr: "Peela", en: "Yellow", hi: "पीला", te: "పసుపు", em: "🟡" },
+            { p: "ਪੀਲਾ", pr: "Peela", en: "Yellow", hi: "पीला", te: "पసుపు", em: "🟡" },
             { p: "ਕਾਲਾ", pr: "Kaala", en: "Black", hi: "काला", te: "నలుపు", em: "⚫" },
-            { p: "ਚਿੱਟਾ", pr: "Chitta", en: "White", hi: "सफेद", te: "తెలుపు", em: "⚪" },
+            { p: "ਚਿੱੱਟਾ", pr: "Chitta", en: "White", hi: "सफेद", te: "తెలుపు", em: "⚪" },
             { p: "ਗੁਲਾਬੀ", pr: "Gulaabi", en: "Pink", hi: "गुलाबी", te: "గులాబీ", em: "🌸" },
-            { p: "ਕੁੱਤਾ", pr: "Kutta", en: "Dog", hi: "कुत्ता", te: "కుక్క", em: "🐶" },
-            { p: "ਬਿੱਲੀ", pr: "Billi", en: "Cat", hi: "बिल्ली", te: "పిల్లి", em: "🐱" },
+            { p: "ਕੁੱੱਤਾ", pr: "Kutta", en: "Dog", hi: "कुत्ता", te: "కుక్క", em: "🐶" },
+            { p: "ਬਿੱੱਲੀ", pr: "Billi", en: "Cat", hi: "बिल्ली", te: "పిల్లి", em: "🐱" },
             { p: "ਗਾਂ", pr: "Gaan", en: "Cow", hi: "गाय", te: "ఆవు", em: "🐄" },
             { p: "ਘੋੜਾ", pr: "Ghora", en: "Horse", hi: "घोड़ा", te: "గుర్రం", em: "🐴" },
             { p: "ਸ਼ੇਰ", pr: "Sher", en: "Lion", hi: "शेर", te: "సింహం", em: "🦁" },
             { p: "ਪੰਛੀ", pr: "Panchhi", en: "Bird", hi: "पक्षी", te: "పక్షి", em: "🐦" },
-            { p: "ਮੱਛੀ", pr: "Machhi", en: "Fish", hi: "मछली", te: "చేప", em: "🐟" },
+            { p: "ਮੱੱਛੀ", pr: "Machhi", en: "Fish", hi: "मछली", te: "చేప", em: "🐟" },
             { p: "ਅੱਖ", pr: "Akkh", en: "Eye", hi: "आँख", te: "కన్ను", em: "👁️" },
             { p: "ਕੰਨ", pr: "Kann", en: "Ear", hi: "कान", te: "చెవి", em: "👂" },
-            { p: "ਨੱਕ", pr: "Nakk", en: "Nose", hi: "नाक", te: "ముక్కు", em: "👃" },
-            { p: "ਹੱਥ", pr: "Hatth", en: "Hand", hi: "हाथ", te: "చెయ్యి", em: "✋" },
+            { p: "ਨੱਕ", pr: "Nakk", en: "Nose", hi: "नाक", te: "मुక్కు", em: "👃" },
+            { p: "ਹੱੱਥ", pr: "Hatth", en: "Hand", hi: "हाथ", te: "చెయ్యి", em: "✋" },
             { p: "ਪੈਰ", pr: "Pair", en: "Foot / Leg", hi: "पैर", te: "కాలు", em: "🦶" },
             { p: "ਸਿਰ", pr: "Sir", en: "Head", hi: "सिर", te: "తల", em: "👤" },
             { p: "ਦਿਲ", pr: "Dil", en: "Heart", hi: "दिल", te: "గుండె", em: "❤️" },
@@ -65,36 +67,37 @@
             { p: "ਅਸਮਾਨ", pr: "Asmaan", en: "Sky", hi: "आसमान", te: "ఆకాశం", em: "☁️" },
             { p: "ਮੀਂਹ", pr: "Meenh", en: "Rain", hi: "बारिश", te: "వర్షం", em: "🌧️" },
             { p: "ਹਵਾ", pr: "Hava", en: "Wind / Air", hi: "हवा", te: "గాలి", em: "💨" },
-            { p: "ਅੱਗ", pr: "Agg", en: "Fire", hi: "आग", te: "నిప్పు", em: "🔥" },
+            { p: "ਅੱੱਗ", pr: "Agg", en: "Fire", hi: "आग", te: "నిప్పు", em: "🔥" },
             { p: "ਦਰਖਤ", pr: "Darakhat", en: "Tree", hi: "पेड़", te: "చెట్టు", em: "🌳" },
             { p: "ਇਹ ਕੀ ਹੈ?", pr: "Eh kee hai?", en: "What is this?", hi: "यह क्या है?", te: "ఇది ఏమిటి?", em: "❓" },
-            { p: "ਇਹ ਕਿੱਥੇ ਹੈ?", pr: "Eh kitthe hai?", en: "Where is it?", hi: "यह कहाँ है?", te: "ఇది ఎక్కడ ఉంది?", em: "📍" },
+            { p: "ਇਹ ਕਿੱੱਥੇ ਹੈ?", pr: "Eh kitthe hai?", en: "Where is it?", hi: "यह कहाँ है?", te: "ఇది ఎక్కడ ఉంది?", em: "📍" },
             { p: "ਤੁਸੀਂ ਕੌਣ ਹੋ?", pr: "Tusi kaun ho?", en: "Who are you?", hi: "आप कौन हैं?", te: "మీరు ఎవరు?", em: "👤" },
             { p: "ਕਿਉਂ?", pr: "Kiyun?", en: "Why?", hi: "क्यों?", te: "ఎందుకు?", em: "🤔" },
             { p: "ਕਦੋਂ?", pr: "Kadon?", en: "When?", hi: "कब?", te: "ఎప్పుడు?", em: "🕒" },
             { p: "ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?", pr: "Tu-haa-da naa kee hai?", en: "What is your name?", hi: "आपका नाम क्या है?", te: "మీ పేరు ఏమిటి?", em: "📛" },
             { p: "ਮੇਰਾ ਨਾਂ ... ਹੈ", pr: "Me-ra naa ... hai", en: "My name is ...", hi: "मेरा नाम ... है", te: "నా పేరు ...", em: "👤" },
-            { p: "ਕੀ ਹਾਲ ਹੈ?", pr: "Kee haal hai?", en: "How's it going? / How are you?", hi: "क्या हाल है?", te: "ఎలా ఉన్నారు?", em: "👋" },
+            { p: "ਕੀ ਹਾਲ ਹੈ?", pr: "Kee haal hai?", en: "How's it going?", hi: "क्या हाल है?", te: "ఎలా ఉన్నారు?", em: "👋" },
             { p: "ਸਭ ਠੀਕ ਹੈ", pr: "Sabh theek hai", en: "Everything is fine", hi: "सब ठीक है", te: "అంతా బాగుంది", em: "👍" },
-            { p: "ਫੇਰ ਮਿਲਾਂਗੇ", pr: "Pher mi-lan-ge", en: "See you again / See you later", hi: "फिर मिलेंगे", te: "మళ్ళీ కలుద్దాం", em: "👋" },
-            { p: "ਕੋਈ ਗੱਲ ਨਹੀਂ", pr: "Ko-ee gall na-hi", en: "No problem / It's okay", hi: "कोई बात नहीं", te: "పర్వాలేదు", em: "😌" },
-            { p: "ਵਾਹ ਬਈ ਵਾਹ!", pr: "Vaah bai vaah!", en: "Wow! / Excellent!", hi: "वाह भाई वाह!", te: "వావ్! అద్భుతం!", em: "🤩" },
-            { p: "ਐਵੇਂ ਹੀ", pr: "Ai-vein hi", en: "Just like that / For no reason", hi: "ऐसे ही", te: "ఊరికే", em: "🤷" },
+            { p: "ਫੇਰ ਮਿਲਾਂਗੇ", pr: "Pher mi-lan-ge", en: "See you again", hi: "फिर मिलेंगे", te: "మళ్ళీ కలుద్దాం", em: "👋" },
+            { p: "ਕੋਈ ਗੱੱਲ ਨਹੀਂ", pr: "Ko-ee gall na-hi", en: "No problem", hi: "कोई बात नहीं", te: "పర్వాలేదు", em: "😌" },
+            { p: "ਵਾਹ ਬਈ ਵਾਹ!", pr: "Vaah bai vaah!", en: "Wow! Excellent!", hi: "वाह भाई वाह!", te: "వావ్! అద్భుతం!", em: "🤩" },
+            { p: "ਐਵੇਂ ਹੀ", pr: "Ai-vein hi", en: "Just like that", hi: "ऐसे ही", te: "ఊరికే", em: "🤷" },
             { p: "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ", pr: "Mai-nu na-hi pa-ta", en: "I don't know", hi: "मुझे नहीं पता", te: "నాకు తెలియదు", em: "🤷‍♂️" },
             { p: "ਕੀ ਬਣਿਆ?", pr: "Kee ban-ya?", en: "What happened?", hi: "क्या हुआ?", te: "ఏమైంది?", em: "🧐" },
-            { p: "ਮੈਨੂੰ ਭੁੱਖ ਲੱਗੀ ਹੈ", pr: "Mai-nu bhukh lag-gee hai", en: "I am hungry", hi: "मुझे भूख लगी है", te: "నాకు ఆకలిగా ఉంది", em: "😋" },
+            { p: "ਮੈਨੂੰ ਭੁੱਖ ਲੱੱਗੀ ਹੈ", pr: "Mai-nu bhukh lag-gee hai", en: "I am hungry", hi: "मुझे भूख लगी है", te: "నాకు ఆకలిగా ఉంది", em: "😋" },
             { p: "ਤਿਆਰ ਹੋ ਜਾਓ", pr: "Tya-ar ho ja-o", en: "Get ready", hi: "तैयार हो जाओ", te: "తయారవ్వండి", em: "👟" },
-            { p: "ਰੱਬ ਰਾਖਾ", pr: "Rabb raa-kha", en: "God be with you / Goodbye", hi: "भगवान भला करे", te: "దేవుడే రక్షకుడు", em: "🙌" },
+            { p: "ਰੱੱਬ ਰਾਖਾ", pr: "Rabb raa-kha", en: "Goodbye", hi: "भगवान भला करे", te: "దేవుడే రక్షకుడు", em: "🙌" },
             { p: "ਖੁਸ਼", pr: "Khush", en: "Happy", hi: "खुश", te: "సంతోషం", em: "😊" },
             { p: "ਉਦਾਸ", pr: "Udaas", en: "Sad", hi: "उदास", te: "బాధ", em: "😢" },
-            { p: "ਵੱਡਾ", pr: "Vadda", en: "Big", hi: "बड़ा", te: "పెద్ద", em: "🐘" },
+            { p: "ਵੱੱਡਾ", pr: "Vadda", en: "Big", hi: "बड़ा", te: "పెద్ద", em: "🐘" },
             { p: "ਛੋਟਾ", pr: "Chhota", en: "Small", hi: "छोटा", te: "చిన్న", em: "🐭" },
-            { p: "ਗਰਮ", pr: "Garam", en: "Hot", hi: "गरम", te: "వేడి", em: "🔥" },
+            { p: "ਗਰਮ", pr: "Garam", en: "Hot", hi: "गरम", te: "वेड़ी", em: "🔥" },
             { p: "ਠੰਢਾ", pr: "Thandhaa", en: "Cold", hi: "ठंडा", te: "చల్లని", em: "❄️" },
             { p: "ਚੰਗਾ", pr: "Changa", en: "Good", hi: "अच्छा", te: "మంచి", em: "👍" },
             { p: "ਬੁਰਾ", pr: "Bura", en: "Bad", hi: "बुरा", te: "చెడు", em: "👎" },
-            { p: "ਸੋਹਣਾ", pr: "Sohna", en: "Beautiful / Handsome", hi: "सुंदर", te: "అందమైన", em: "✨" }
-    ];
+            { p: "ਸੋਹਣਾ", pr: "Sohna", en: "Beautiful", hi: "सुंदर", te: "అందమైన", em: "✨" }
+        ];
+    </script>
 
     <style>
         :root { 
@@ -123,10 +126,9 @@
         .header h1 { font-size: 1.5rem; color: var(--orange); margin: 0; }
         #counter { font-size: 1rem; color: #888; font-weight: bold; margin-top: 5px; }
 
-        /* Magic Card Layout */
         .card-container { 
             width: 100%; max-width: 350px; 
-            height: 60vh; 
+            height: 55vh; 
             perspective: 1000px;
             margin: 10px 0;
         }
@@ -149,29 +151,26 @@
         .card-front { background: var(--card-front); }
         .card-back { background: var(--card-back); transform: rotateY(180deg); }
 
-        /* Front Content */
-        .emoji { font-size: 90px; margin-bottom: 10px; }
-        .punjabi { font-size: 2.8rem; color: var(--orange); text-align: center; margin: 0; font-weight: bold; }
-        .hint { color: rgba(0,0,0,0.2); font-weight: bold; margin-top: 30px; font-size: 0.8rem; letter-spacing: 1px; }
+        .emoji { font-size: 80px; margin-bottom: 10px; }
+        .punjabi { font-size: 2.5rem; color: var(--orange); text-align: center; margin: 0; font-weight: bold; }
+        .hint { color: rgba(0,0,0,0.2); font-weight: bold; margin-top: 20px; font-size: 0.8rem; letter-spacing: 1px; }
 
-        /* Back Content */
         .speaker-btn {
-            background: #FF6B6B; border: none; width: 80px; height: 80px;
+            background: #FF6B6B; border: none; width: 75px; height: 75px;
             border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
             margin-bottom: 15px; box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
         }
-        .speaker-btn svg { fill: white; width: 40px; }
-        .pron-tag { font-size: 1.1rem; color: #666; font-style: italic; background: #FFF4D1; padding: 6px 18px; border-radius: 15px; margin-bottom: 15px; }
+        .speaker-btn svg { fill: white; width: 35px; }
+        .pron-tag { font-size: 1rem; color: #666; font-style: italic; background: #FFF4D1; padding: 6px 15px; border-radius: 12px; margin-bottom: 15px; }
 
-        .m-box { text-align: center; margin: 6px 0; width: 100%; }
-        .m-label { font-size: 0.65rem; color: #AAA; text-transform: uppercase; margin: 0; font-weight: bold; }
-        .m-val { font-size: 1.5rem; font-weight: bold; margin: 0; line-height: 1.2; }
+        .m-box { text-align: center; margin: 4px 0; width: 100%; }
+        .m-label { font-size: 0.6rem; color: #AAA; text-transform: uppercase; margin: 0; font-weight: bold; }
+        .m-val { font-size: 1.4rem; font-weight: bold; margin: 0; line-height: 1.2; }
         
         .eng { color: var(--blue); } 
         .hin { color: var(--green); } 
         .tel { color: var(--purple); }
 
-        /* Navigation Buttons */
         .nav { display: flex; gap: 30px; padding-bottom: 25px; flex-shrink: 0; }
         .btn {
             background: white; border: none; padding: 15px 35px;
@@ -185,18 +184,16 @@
 
     <div class="header">
         <h1>1-Minute Punjabi</h1>
-        <div id="counter">Loading Cards...</div>
+        <div id="counter">Loading...</div>
     </div>
 
     <div class="card-container">
         <div class="card" id="mainCard" onclick="handleFlip(event)">
-            <!-- FRONT FACE -->
             <div class="card-face card-front">
                 <div class="emoji" id="disp-e">✨</div>
                 <h2 class="punjabi" id="disp-p">...</h2>
                 <div class="hint">TAP TO REVEAL</div>
             </div>
-            <!-- BACK FACE -->
             <div class="card-face card-back">
                 <button class="speaker-btn" id="audioTrigger" onclick="playAudio(event)">
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
@@ -218,18 +215,8 @@
         let currentIdx = 0;
         const player = new Audio();
 
-        // 1. Check if words.js is loaded
-        function initApp() {
-            if (window.library && window.library.length > 0) {
-                render();
-            } else {
-                // If the file is still loading from server, check again in 200ms
-                setTimeout(initApp, 200);
-            }
-        }
-
-        // 2. Render the Card Data
         function render() {
+            if (!window.library || window.library.length === 0) return;
             const data = window.library[currentIdx];
             document.getElementById('disp-p').innerText = data.p;
             document.getElementById('disp-e').innerText = data.em;
@@ -242,41 +229,31 @@
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
-        // 3. Flip Card Logic
         function handleFlip(e) {
-            // Unmute browser audio engine on first tap (Safari/iPhone requirement)
+            // "Wake up" audio for mobile
             if (player.src === "") {
                 player.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
                 player.play().catch(() => {});
             }
-
-            // Prevent flip if the speaker button was clicked
             if (e.target.closest('#audioTrigger')) return;
-            
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
-        // 4. Native Punjabi Audio Engine (Google TTS)
         function playAudio(e) {
-            if (e) e.stopPropagation(); // Stop card from flipping
-            
+            if (e) e.stopPropagation();
             const text = window.library[currentIdx].p;
-            // High-quality native Punjabi accent
             const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=pa&client=tw-ob`;
-            
             player.src = url;
-            player.play().catch(err => console.log("Audio Error: User interaction required."));
+            player.play().catch(err => console.log("Audio Error"));
         }
 
-        // 5. Navigation
         function move(dir) {
             if (!window.library) return;
             currentIdx = (currentIdx + dir + window.library.length) % window.library.length;
             render();
         }
 
-        // Start checking for library on load
-        initApp();
+        window.onload = render;
     </script>
 </body>
 </html>
