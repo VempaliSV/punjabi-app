@@ -150,6 +150,7 @@
             --orange: #D35400; 
             --blue: #2E86C1;
             --green: #27AE60;
+            --purple: #8E44AD;
         }
 
         * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
@@ -157,35 +158,22 @@
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--bg);
-            margin: 0; padding: env(safe-area-inset-top) 15px env(safe-area-inset-bottom) 15px;
+            margin: 0; 
+            padding: env(safe-area-inset-top) 15px env(safe-area-inset-bottom) 15px;
             display: flex; flex-direction: column;
             align-items: center; justify-content: space-between;
             height: 100dvh; overflow: hidden;
         }
 
-        /* Score Display */
-        .score-box {
-            background: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            color: #FFB300;
-            font-size: 1.2rem;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .header { text-align: center; }
-        .header h1 { font-size: 1.2rem; color: var(--orange); margin: 5px 0; opacity: 0.6; }
+        .header { text-align: center; padding-top: 15px; flex-shrink: 0; }
+        .header h1 { font-size: 1.4rem; color: var(--orange); margin: 0; }
+        #counter { font-size: 0.9rem; color: #888; font-weight: bold; margin-top: 5px; }
 
         .card-container { 
             width: 100%; max-width: 350px; 
-            height: 58vh; 
+            height: 60vh; 
             perspective: 1000px;
+            margin: 10px 0;
         }
         
         .card {
@@ -200,66 +188,59 @@
             position: absolute; width: 100%; height: 100%;
             backface-visibility: hidden; -webkit-backface-visibility: hidden;
             display: flex; flex-direction: column; align-items: center;
-            justify-content: center; border-radius: 40px; border: 10px solid white; padding: 20px;
+            justify-content: center; border-radius: 40px; border: 10px solid white; padding: 25px;
         }
 
         .card-front { background: var(--card-front); }
         .card-back { background: var(--card-back); transform: rotateY(180deg); }
 
-        .emoji { font-size: 90px; margin-bottom: 5px; }
-        .english-word { font-size: 2.5rem; color: var(--blue); text-align: center; margin: 0; font-weight: bold; }
-        
-        .punjabi-word { font-size: 2.8rem; color: var(--orange); margin: 0; font-weight: bold; }
-        
+        /* Front Content (English) */
+        .emoji { font-size: 100px; margin-bottom: 10px; }
+        .english-word { font-size: 2.8rem; color: var(--blue); text-align: center; margin: 0; font-weight: bold; }
+        .hint { color: rgba(0,0,0,0.2); font-weight: bold; margin-top: 30px; font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* Back Content (Punjabi) */
+        .punjabi-word { font-size: 3rem; color: var(--orange); margin: 0 0 10px 0; font-weight: bold; }
         .speaker-btn {
-            background: #FF6B6B; border: none; width: 65px; height: 65px;
+            background: #FF6B6B; border: none; width: 75px; height: 75px;
             border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            margin: 10px 0; box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            margin-bottom: 15px; box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
         }
-        .speaker-btn svg { fill: white; width: 30px; }
+        .speaker-btn svg { fill: white; width: 35px; }
+        .pron-tag { font-size: 1.1rem; color: #666; font-style: italic; background: #FFF4D1; padding: 6px 18px; border-radius: 15px; margin-bottom: 15px; }
 
-        /* Mastered Button */
-        .mastered-btn {
-            background: var(--green);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
-            cursor: pointer;
-        }
+        .m-box { text-align: center; margin: 4px 0; width: 100%; }
+        .m-label { font-size: 0.65rem; color: #AAA; text-transform: uppercase; margin: 0; font-weight: bold; }
+        .m-val { font-size: 1.4rem; font-weight: bold; margin: 0; line-height: 1.2; }
+        
+        .hin { color: var(--green); } 
+        .tel { color: var(--purple); }
 
-        .nav { display: flex; gap: 30px; padding-bottom: 20px; }
+        .nav { display: flex; gap: 30px; padding-bottom: 25px; flex-shrink: 0; }
         .btn {
-            background: white; border: none; padding: 12px 30px;
-            border-radius: 20px; font-weight: bold; color: #888;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer;
+            background: white; border: none; padding: 15px 35px;
+            border-radius: 20px; font-weight: bold; color: #666;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); cursor: pointer; font-size: 1.1rem;
         }
-
-        /* Animation for score bump */
-        .bump { transform: scale(1.3); }
+        .btn:active { background: #f0f0f0; transform: scale(0.95); }
     </style>
 </head>
 <body>
 
-    <div class="score-box" id="scoreDisplay">
-        <span>⭐</span> <span id="scoreVal">0</span>
-    </div>
-
     <div class="header">
         <h1>1-Minute Punjabi</h1>
+        <div id="counter">Loading...</div>
     </div>
 
     <div class="card-container">
         <div class="card" id="mainCard" onclick="handleFlip(event)">
+            <!-- FRONT FACE (English + Emoji) -->
             <div class="card-face card-front">
                 <div class="emoji" id="disp-e">✨</div>
                 <h2 class="english-word" id="disp-en">...</h2>
-                <div style="color:rgba(0,0,0,0.2); font-weight:bold; margin-top:20px; font-size:0.7rem;">TAP TO FLIP</div>
+                <div class="hint">TAP TO REVEAL PUNJABI</div>
             </div>
+            <!-- BACK FACE (Punjabi + Others) -->
             <div class="card-face card-back">
                 <h2 class="punjabi-word" id="disp-p"></h2>
                 
@@ -267,11 +248,10 @@
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                 </button>
 
-                <div id="disp-pr" style="color:#999; font-style:italic; margin-bottom:10px;"></div>
+                <div class="pron-tag" id="disp-pr"></div>
                 
-                <button class="mastered-btn" id="masterBtn" onclick="earnStar(event)">
-                    I LEARNED IT!
-                </button>
+                <div class="m-box"><p class="m-label">Hindi</p><p class="m-val hin" id="disp-hi"></p></div>
+                <div class="m-box"><p class="m-label">Telugu</p><p class="m-val tel" id="disp-te"></p></div>
             </div>
         </div>
     </div>
@@ -283,10 +263,10 @@
 
     <script>
         let currentIdx = 0;
-        let score = parseInt(localStorage.getItem('punjabiScoreMaster')) || 0;
         const synth = window.speechSynthesis;
 
-        function shuffle(array) {
+        // Function to shuffle the library randomly
+        function shuffleLibrary(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
@@ -295,8 +275,7 @@
 
         function initApp() {
             if (window.library && window.library.length > 0) {
-                document.getElementById('scoreVal').innerText = score;
-                shuffle(window.library);
+                shuffleLibrary(window.library); // Shuffle once at startup
                 render();
             } else {
                 setTimeout(initApp, 200);
@@ -309,33 +288,17 @@
             document.getElementById('disp-en').innerText = data.en;
             document.getElementById('disp-p').innerText = data.p;
             document.getElementById('disp-pr').innerText = data.pr;
+            document.getElementById('disp-hi').innerText = data.hi;
+            document.getElementById('disp-te').innerText = data.te;
+            document.getElementById('counter').innerText = `Card ${currentIdx + 1} of ${window.library.length}`;
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
         function handleFlip(e) {
-            // Prevent flip if any button is clicked
-            if (e.target.closest('button')) return;
-            
-            // Prime audio for Safari
-            synth.speak(new SpeechSynthesisUtterance(""));
+            const silent = new SpeechSynthesisUtterance("");
+            synth.speak(silent);
+            if (e.target.closest('#audioTrigger')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
-        }
-
-        function earnStar(e) {
-            e.stopPropagation();
-            
-            // 1. Increase score
-            score++;
-            localStorage.setItem('punjabiScoreMaster', score);
-            
-            // 2. Visual Feedback
-            const scoreDisp = document.getElementById('scoreDisplay');
-            document.getElementById('scoreVal').innerText = score;
-            scoreDisp.classList.add('bump');
-            setTimeout(() => scoreDisp.classList.remove('bump'), 300);
-
-            // 3. Move to next card after a tiny delay
-            setTimeout(() => move(1), 400);
         }
 
         function playAudio(e) {
@@ -344,8 +307,8 @@
             const text = window.library[currentIdx].p;
             const msg = new SpeechSynthesisUtterance(text);
             const voices = synth.getVoices();
-            const pVoice = voices.find(v => v.lang.includes('pa') || v.lang.includes('hi'));
-            if (pVoice) msg.voice = pVoice;
+            const punjabiVoice = voices.find(v => v.lang.includes('pa') || v.lang.includes('hi'));
+            if (punjabiVoice) msg.voice = punjabiVoice;
             msg.lang = 'pa-IN';
             msg.rate = 0.8;
             synth.speak(msg);
@@ -358,6 +321,9 @@
         }
 
         initApp();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = () => synth.getVoices();
+        }
     </script>
 </body>
 </html>
