@@ -265,8 +265,17 @@
         let currentIdx = 0;
         const synth = window.speechSynthesis;
 
+        // Function to shuffle the library randomly
+        function shuffleLibrary(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
         function initApp() {
             if (window.library && window.library.length > 0) {
+                shuffleLibrary(window.library); // Shuffle once at startup
                 render();
             } else {
                 setTimeout(initApp, 200);
@@ -275,44 +284,33 @@
 
         function render() {
             const data = window.library[currentIdx];
-            
-            // Front Elements
             document.getElementById('disp-e').innerText = data.em;
             document.getElementById('disp-en').innerText = data.en;
-            
-            // Back Elements
             document.getElementById('disp-p').innerText = data.p;
             document.getElementById('disp-pr').innerText = data.pr;
             document.getElementById('disp-hi').innerText = data.hi;
             document.getElementById('disp-te').innerText = data.te;
-            
             document.getElementById('counter').innerText = `Card ${currentIdx + 1} of ${window.library.length}`;
             document.getElementById('mainCard').classList.remove('is-flipped');
         }
 
         function handleFlip(e) {
-            // Prime audio for Safari
             const silent = new SpeechSynthesisUtterance("");
             synth.speak(silent);
-
             if (e.target.closest('#audioTrigger')) return;
             document.getElementById('mainCard').classList.toggle('is-flipped');
         }
 
         function playAudio(e) {
             if (e) e.stopPropagation();
-            
             synth.cancel();
             const text = window.library[currentIdx].p;
             const msg = new SpeechSynthesisUtterance(text);
-            
             const voices = synth.getVoices();
             const punjabiVoice = voices.find(v => v.lang.includes('pa') || v.lang.includes('hi'));
-            
             if (punjabiVoice) msg.voice = punjabiVoice;
             msg.lang = 'pa-IN';
             msg.rate = 0.8;
-            
             synth.speak(msg);
         }
 
@@ -323,8 +321,6 @@
         }
 
         initApp();
-        
-        // Voice loading fix for Chrome
         if (speechSynthesis.onvoiceschanged !== undefined) {
             speechSynthesis.onvoiceschanged = () => synth.getVoices();
         }
